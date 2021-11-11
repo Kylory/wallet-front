@@ -1,6 +1,6 @@
 // import { NavLink } from 'react-router-dom';
-import { ReactComponent as HomeIcon } from '../icons/home.svg';
-import { ReactComponent as StatIcon } from '../icons/statistics.svg';
+import { ReactComponent as HomeIcon } from '../../icons/home.svg';
+import { ReactComponent as StatIcon } from '../../icons/statistics.svg';
 
 export default function Navigation() {
   return (
