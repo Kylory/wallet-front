@@ -1,28 +1,10 @@
 import Media from 'react-media';
-import {
-  Container,
-  Logo,
-  IconContainer,
-  ImageContainer,
-  ImageText,
-  Icon,
-  Form,
-  Input,
-  ButtonSubmit,
-  ButtonLink,
-  LogoText,
-} from './styles';
+import { Container, Logo, ImageContainer, ImageText } from './styles';
 
 import { ReactComponent as LogoTextIcon } from '../icons/logo-text.svg';
-import { ReactComponent as LogoIcon } from '../icons/logo.svg';
-import { ReactComponent as EmailIcon } from '../icons/email.svg';
-import { ReactComponent as PasswordIcon } from '../icons/password.svg';
+import FormLogin from '../components/FormLogin';
 
 export default function LoginView() {
-  const hadleSubmit = e => {
-    e.preventDefault();
-  };
-
   return (
     <Media
       queries={{
@@ -38,24 +20,7 @@ export default function LoginView() {
               <Logo>
                 <LogoTextIcon />
               </Logo>
-              <Form onSubmit={hadleSubmit}>
-                <IconContainer>
-                  <Input type="email" placeholder="E-mail" />
-                  <Icon>
-                    <EmailIcon />
-                  </Icon>
-                </IconContainer>
-
-                <IconContainer>
-                  <Input type="password" placeholder="Пароль" />
-                  <Icon>
-                    <PasswordIcon />
-                  </Icon>
-                </IconContainer>
-
-                <ButtonSubmit type="submit">Вход</ButtonSubmit>
-                <ButtonLink type="button">Регистрация</ButtonLink>
-              </Form>
+              <FormLogin />
             </Container>
           )}
           {matches.tablet && (
@@ -64,28 +29,7 @@ export default function LoginView() {
                 <img src="/images/loginTablet.png" alt="Logo" />
                 <ImageText>Finance App</ImageText>
               </ImageContainer>
-              <Form onSubmit={hadleSubmit}>
-                <Logo>
-                  <LogoIcon />
-                  <LogoText>Wallet</LogoText>
-                </Logo>
-                <IconContainer>
-                  <Input type="email" placeholder="E-mail" />
-                  <Icon>
-                    <EmailIcon />
-                  </Icon>
-                </IconContainer>
-
-                <IconContainer margin="50px">
-                  <Input type="password" placeholder="Пароль" />
-                  <Icon>
-                    <PasswordIcon />
-                  </Icon>
-                </IconContainer>
-
-                <ButtonSubmit type="submit">Вход</ButtonSubmit>
-                <ButtonLink type="button">Регистрация</ButtonLink>
-              </Form>
+              <FormLogin />
             </Container>
           )}
           {matches.desktop && (
@@ -94,28 +38,7 @@ export default function LoginView() {
                 <img src="/images/loginDesktop.png" alt="Logo" />
                 <ImageText>Finance App</ImageText>
               </ImageContainer>
-              <Form onSubmit={hadleSubmit}>
-                <Logo>
-                  <LogoIcon />
-                  <LogoText>Wallet</LogoText>
-                </Logo>
-                <IconContainer>
-                  <Input type="email" placeholder="E-mail" />
-                  <Icon>
-                    <EmailIcon />
-                  </Icon>
-                </IconContainer>
-
-                <IconContainer margin="50px">
-                  <Input type="password" placeholder="Пароль" />
-                  <Icon>
-                    <PasswordIcon />
-                  </Icon>
-                </IconContainer>
-
-                <ButtonSubmit type="submit">Вход</ButtonSubmit>
-                <ButtonLink type="button">Регистрация</ButtonLink>
-              </Form>
+              <FormLogin />
             </Container>
           )}
         </>
