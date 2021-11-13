@@ -2,7 +2,7 @@ import Balance from './components/Balance/Balance';
 import ExchangeRate from './components/ExchangeRate/ExchangeRate';
 import Navigation from './components/Navigation/Navigation';
 import SideBar from './components/SideBar';
-
+import Statistic from './components/Statistic'
 import GlobalStyle from './styles/normalize';
 import Fonts from './styles/fonts'
 import React from 'react';
@@ -26,7 +26,9 @@ function App() {
         <Balance />
         <ExchangeRate />
       </SideBar>
+      <Statistic />
     </>
+  
   );
 }
 
