@@ -3,10 +3,24 @@ import ExchangeRate from './components/ExchangeRate/ExchangeRate';
 import Navigation from './components/Navigation/Navigation';
 import SideBar from './components/SideBar';
 import Statistic from './components/Statistic'
+import GlobalStyle from './styles/normalize';
+import Fonts from './styles/fonts'
+import React from 'react';
+
+// import LoginView from './views/LoginView';
+// import RegistrationView from './views/RegistrationView';
+
 function App() {
   return (
     <>
+
+      <Fonts/>
+      <GlobalStyle rwdVersion/>
       <div>Wallet</div>
+
+      {/* <LoginView /> */}
+      {/* <RegistrationView /> */}
+
       <SideBar>
         <Navigation />
         <Balance />
