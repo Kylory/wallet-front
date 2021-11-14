@@ -6,7 +6,12 @@ export const getMonth = state => {
 }
 export const getStatistics = state => state.statistics.statisticList
 
-export const getIncome = state => state.statistics.income
-export const getExpenses = state => state.statistics.expenses
+export const getIncomes = state => {
+  return state.statistics.statisticsIncomes.map(item => {
+    const [title, value] = Object.entries(item)[0]
+    return{title, value}
+  })
+}
+
 
 

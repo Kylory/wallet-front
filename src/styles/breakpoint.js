@@ -6,6 +6,15 @@ const breakpoints = {
   l: '1280px',
 };
 
+export const mediaQuery = {
+  s: `(min-width: ${breakpoints.s})`,
+  m: `(min-width: ${breakpoints.m})`,
+  l: `(min-width: ${breakpoints.l})`,
+
+
+}
+
+
 export const breakpoint = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (min-width: ${breakpoints[label]}) {
