@@ -10,9 +10,12 @@ export const mediaQuery = {
   s: `(min-width: ${breakpoints.s})`,
   m: `(min-width: ${breakpoints.m})`,
   l: `(min-width: ${breakpoints.l})`,
-
-
 }
+const breakpointsMax = {
+  s: '319px',
+  m: '767px',
+  l: '1279px',
+};
 
 
 export const breakpoint = Object.keys(breakpoints).reduce((acc, label) => {
@@ -24,9 +27,9 @@ export const breakpoint = Object.keys(breakpoints).reduce((acc, label) => {
   return acc;
 }, {});
 
-export const breakpointMax = Object.keys(breakpoints).reduce((acc, label) => {
+export const breakpointMax = Object.keys(breakpointsMax).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (max-width: ${breakpoints[label]}) {
+    @media (max-width: ${breakpointsMax[label]}) {
       ${css(...args)};
     }
   `;
