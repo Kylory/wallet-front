@@ -1,5 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import { ContentWrapper, MainWrapperStyles, PageWrapper } from './MainWrapperStyles';
+import {
+  ContentWrapper,
+  MainWrapperStyles,
+  PageWrapper,
+} from './MainWrapperStyles';
 import Fonts from '../styles/fonts';
 import GlobalStyle from '../styles/normalize';
 import React, { useState } from 'react';
@@ -9,25 +13,24 @@ import SideBar from '../components/SideBar';
 import Navigation from '../components/Navigation/Navigation';
 import ExchangeRate from '../components/ExchangeRate';
 
-
 export const Layout = () => {
-
   const [auth, setAuth] = useState(true);
   return (
     <>
-      <Fonts/>
-      <GlobalStyle rwdVersion/>
+      <Fonts />
+      <GlobalStyle rwdVersion />
       <MainWrapperStyles>
         <PageWrapper>
           <header>Wallet</header>
           <ContentWrapper>
-            {auth && <div>
-              <Navigation/>
-              <SideBar/>
-              <Balance/>
-              <ExchangeRate/>
-            </div>}
-            <Outlet/>
+            {auth && (
+              <SideBar>
+                <Navigation />
+                <Balance />
+                <ExchangeRate />
+              </SideBar>
+            )}
+            <Outlet />
           </ContentWrapper>
         </PageWrapper>
       </MainWrapperStyles>

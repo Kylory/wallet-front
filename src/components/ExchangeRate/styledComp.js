@@ -37,13 +37,15 @@ const TableHead = styled.thead`
 `;
 
 const StyledTh = styled.th`
-  padding: 12px;
+  padding: 19px;
   padding-left: 30px;
   text-align: center;
 `;
 
 const StyledTd = styled.td`
-  padding: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 13px;
   padding-left: 30px;
   text-align: start;
   color: #fff;
