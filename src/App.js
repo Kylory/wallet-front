@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          <Route path='/' index element={<div>Igor we are waiting for you</div>}/>
+          <Route path='/' exact element={<Statistic/>}/>
           <Route path="login" exact element={<LoginView/>}/>
           <Route path="register" exact element={<RegistrationView/>}/>
           <Route path='statistics' exact element={<StatisticView/>}/>
