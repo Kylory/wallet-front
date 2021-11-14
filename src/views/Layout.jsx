@@ -25,8 +25,10 @@ export const Layout = () => {
           <ContentWrapper>
             {auth && (
               <SideBar>
-                <Navigation />
-                <Balance />
+                <div>
+                  <Navigation />
+                  <Balance />
+                </div>
                 <ExchangeRate />
               </SideBar>
             )}
