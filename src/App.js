@@ -2,7 +2,7 @@ import Balance from './components/Balance/Balance';
 import ExchangeRate from './components/ExchangeRate/ExchangeRate';
 import Navigation from './components/Navigation/Navigation';
 import SideBar from './components/SideBar';
-// import Statistic from './components/Statistic'
+import Statistic from './components/Statistic'
 import GlobalStyle from './styles/normalize';
 import Fonts from './styles/fonts'
 import React from 'react';
@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          {/* <Route path='/' index element={<div>Igor we are waiting for you</div>}/> */}
+          <Route path='/' exact element={<Statistic/>}/>
           <Route path="login" exact element={<LoginView/>}/>
           <Route path="register" exact element={<RegistrationView/>}/>
           <Route path='statistics' exact element={<StatisticView/>}/>
