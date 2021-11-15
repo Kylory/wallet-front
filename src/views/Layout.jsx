@@ -8,7 +8,7 @@ import Fonts from '../styles/fonts';
 import GlobalStyle from '../styles/normalize';
 import React, { useState } from 'react';
 import Balance from '../components/Balance';
-
+// import Statistic from '../components/Statistic';
 import SideBar from '../components/SideBar';
 import Navigation from '../components/Navigation/Navigation';
 import ExchangeRate from '../components/ExchangeRate';
@@ -32,6 +32,8 @@ export const Layout = () => {
                 <ExchangeRate />
               </SideBar>
             )}
+            <Outlet />
+            {/* <Statistic/> */}
             <Outlet />
           </ContentWrapper>
         </PageWrapper>

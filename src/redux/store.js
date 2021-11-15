@@ -1,11 +1,12 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunkMiddleware, {ThunkAction} from "redux-thunk";
 import { statisticsReducer } from './reducers/statistic/statisticReducer';
-
+import {statisticsHomeReducer} from './reducers/statistic/homeTable/statisticHomeReducer';
 
 
 let reducers = combineReducers({
- statistics: statisticsReducer
+ statistics: statisticsReducer,
+ statisticsHome: statisticsHomeReducer
 })
 
 
