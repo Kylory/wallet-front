@@ -12,6 +12,7 @@ import LoginView from './views/LoginView';
 import RegistrationView from './views/RegistrationView';
 import { StatisticView } from './views/Statistics/StatisticView';
 import { Layout } from './views/Layout';
+import ExchangeRate from './components/ExchangeRate';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="login" exact element={<LoginView />} />
           <Route path="register" exact element={<RegistrationView />} />
           <Route path="statistics" exact element={<StatisticView />} />
+          {/* <Route path="exchange" exact element={<ExchangeRate />} /> */}
           <Route path="*" element={<>404</>} />
         </Route>
       </Routes>
