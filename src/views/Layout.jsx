@@ -5,18 +5,17 @@ import {
   PageWrapper,
   AlignWrapper,
 } from './MainWrapperStyles';
-import Fonts from '../styles/fonts';
-import GlobalStyle from '../styles/normalize';
-import React, { useState } from 'react';
-import Balance from '../components/Balance';
-// import Statistic from '../components/Statistic';
-import SideBar from '../components/SideBar';
-import Navigation from '../components/Navigation/Navigation';
-import ExchangeRate from '../components/ExchangeRate';
-import { Header } from '../components/Header/Header';
+import Fonts from 'styles/fonts';
+import GlobalStyle from 'styles/normalize';
+import React from 'react';
+import Balance from 'components/Balance';
+// import Statistic from 'components/Statistic';
+import SideBar from 'components/SideBar';
+import Navigation from 'components/Navigation/Navigation';
+import ExchangeRate from 'components/ExchangeRate';
+import { Header } from 'components/Header/Header';
 
 export const Layout = () => {
-  const [auth, setAuth] = useState(true);
   return (
     <>
       <Fonts />
@@ -25,16 +24,14 @@ export const Layout = () => {
         <PageWrapper>
           <Header/>
           <ContentWrapper>
-            {auth && (
-              <SideBar>
-                <AlignWrapper>
-                  <Navigation />
-                  <Balance />
-                </AlignWrapper>
-                <ExchangeRate />
-              </SideBar>
-            )}
-            {/* <Statistic /> */}
+            <SideBar>
+              <AlignWrapper>
+                <Navigation />
+                <Balance />
+              </AlignWrapper>
+              <ExchangeRate />
+            </SideBar>
+            {/* <Statistic/> */}
             <Outlet />
           </ContentWrapper>
         </PageWrapper>
