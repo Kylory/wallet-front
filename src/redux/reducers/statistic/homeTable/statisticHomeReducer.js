@@ -1,3 +1,4 @@
+
 const initialState =  [
       {date: '04.01.19', type: '-', category: 'Разное', comment: 'Подарок жене', amount: 300.00, balance: '6 900.00'},
       {date: '04.01.19', type: '-', category: 'Разное', comment: 'Подарок жене', amount: 300.00, balance: '6 900.00'},
@@ -9,7 +10,7 @@ const initialState =  [
       {date: '07.01.19', type: '+', category: 'Нерегулярный доход', comment: 'Подарок на др', amount: 1000.00, balance: '14870.00'},
      
     ];
-  
+
   
   export const statisticsHomeReducer = (state = initialState, action) => {
     switch (action.type) {
