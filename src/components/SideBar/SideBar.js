@@ -1,3 +1,4 @@
-const SideBar = ({ children }) => <section>{children}</section>;
+import { Wrapper } from './styledComp';
+const SideBar = ({ children }) => <Wrapper>{children}</Wrapper>;
 
 export default SideBar;
