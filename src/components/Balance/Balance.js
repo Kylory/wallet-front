@@ -1,10 +1,13 @@
+import { Wrapper, Text, Summ } from './styledComp';
 const Balance = () => {
   return (
     <>
-      <p>ВАШ БАЛАНС</p>
-      <div>
-        <p>₴ 24000</p>
-      </div>
+      <Wrapper>
+        <Text>ВАШ БАЛАНС</Text>
+        <div>
+          <Summ>₴ 24000.00</Summ>
+        </div>
+      </Wrapper>
     </>
   );
 };
