@@ -8,6 +8,7 @@ import Balance from '../components/Balance';
 import SideBar from '../components/SideBar';
 import Navigation from '../components/Navigation/Navigation';
 import ExchangeRate from '../components/ExchangeRate';
+import { Header } from '../components/Header/Header';
 
 
 export const Layout = () => {
@@ -19,7 +20,7 @@ export const Layout = () => {
       <GlobalStyle rwdVersion/>
       <MainWrapperStyles>
         <PageWrapper>
-          <header>Wallet</header>
+          <Header/>
           <ContentWrapper>
             {auth && <div>
               <Navigation/>

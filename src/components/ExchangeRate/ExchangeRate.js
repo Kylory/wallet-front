@@ -7,7 +7,6 @@ const ExchangeRate = () => {
   useEffect(() => {
     fetchExchangeRate().then(currArr => setCurrencyArr(currArr));
   }, []);
-  // console.log(currencyArr[0].buy.slice(0, 5));
   return (
     <table>
       <thead>
