@@ -13,6 +13,7 @@ import Balance from '../components/Balance';
 import SideBar from '../components/SideBar';
 import Navigation from '../components/Navigation/Navigation';
 import ExchangeRate from '../components/ExchangeRate';
+import { Header } from '../components/Header/Header';
 
 export const Layout = () => {
   const [auth, setAuth] = useState(true);
@@ -22,7 +23,7 @@ export const Layout = () => {
       <GlobalStyle rwdVersion />
       <MainWrapperStyles>
         <PageWrapper>
-          <header>Wallet</header>
+          <Header/>
           <ContentWrapper>
             {auth && (
               <SideBar>
