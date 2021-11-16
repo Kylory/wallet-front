@@ -12,7 +12,6 @@ const ExchangeRate = () => {
       setCurrencyArr(currArr);
     });
   }, []);
-  // console.log(currencyArr[0].buy.slice(0, 5));
   return (
     <Wrapper>
       <Table>

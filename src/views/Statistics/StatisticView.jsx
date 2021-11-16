@@ -10,9 +10,7 @@ import {mediaQuery} from '../../styles/breakpoint'
 
 
 export const StatisticView = () => {
-
   const month = useSelector(state => getMonth(state));
-
   const desktopScreen = useMedia(mediaQuery.m)
   const year = [
     { value: 123123123, label: '2020' },
