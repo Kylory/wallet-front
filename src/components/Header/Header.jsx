@@ -6,7 +6,6 @@ import { ExitWrapper, HeaderWrapper, LogoHeader } from './style';
 import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
-
   const { pathname } = useLocation();
   const show = pathname === '/' || pathname === '/statistics';
   return (
