@@ -3,6 +3,7 @@ import {
   ContentWrapper,
   MainWrapperStyles,
   PageWrapper,
+  AlignWrapper,
 } from './MainWrapperStyles';
 import Fonts from '../styles/fonts';
 import GlobalStyle from '../styles/normalize';
@@ -25,15 +26,14 @@ export const Layout = () => {
           <ContentWrapper>
             {auth && (
               <SideBar>
-                <div>
+                <AlignWrapper>
                   <Navigation />
                   <Balance />
-                </div>
+                </AlignWrapper>
                 <ExchangeRate />
               </SideBar>
             )}
-            <Outlet />
-            {/* <Statistic/> */}
+            {/* <Statistic /> */}
             <Outlet />
           </ContentWrapper>
         </PageWrapper>
