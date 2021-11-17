@@ -43,16 +43,11 @@ const ExchangeRate = () => {
           </h1>
         )}
         {loading && (
-          <p
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              color: 'white',
-              padding: '40px',
-            }}
-          >
-            Loading...
-          </p>
+          <tbody>
+            <tr>
+              <StyledTd>Loading...</StyledTd>
+            </tr>
+          </tbody>
         )}
         <tbody>
           {currencyArr.map(({ ccy, buy, sale }) => (
