@@ -1,4 +1,5 @@
 import { Wrapper, Text, Summ } from './styledComp';
+
 const Balance = () => {
   return (
     <>
