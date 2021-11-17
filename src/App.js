@@ -17,7 +17,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-
   return (
     <BrowserRouter>
       {isFetchingCurrentUser ? (
