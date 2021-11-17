@@ -32,7 +32,7 @@ export default function Navigation() {
                   <StatIconMob width="38" height="38" />
                 </IconWrapper>
               </StyledLink>
-              <StyledLink to="/unknown">
+              <StyledLink to="/exchange">
                 <IconWrapper>
                   <ExchangeIcon width="38" height="38" />
                 </IconWrapper>
