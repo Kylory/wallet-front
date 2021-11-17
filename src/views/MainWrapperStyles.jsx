@@ -9,7 +9,7 @@ export const PageWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
   ${breakpoint.m`
-    max-width: 667px;
+    max-width: 688px;
   `};
   ${breakpoint.l`
     max-width: 1440px;

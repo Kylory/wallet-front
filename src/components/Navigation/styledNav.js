@@ -49,14 +49,20 @@ const StyledLink = styled(NavLink)`
   }
 `;
 const LinkText = styled.p`
-  padding-left: 20px;
+  padding-left: 17px;
 `;
 
 const IconWrapper = styled.div`
+  ${breakpoint.m`
+    height: 24px;
+    width: 24px;
+  `};
+
   svg {
     fill: #6e78e8;
     ${StyledLink}.active & {
       fill: #4a56e2;
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
     }
   }
   /* &:hover {
