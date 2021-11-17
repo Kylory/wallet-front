@@ -1,8 +1,8 @@
 import Media from 'react-media';
 import { Container, Logo, ImageContainer, ImageText } from './styles';
 
-import { ReactComponent as LogoTextIcon } from '../icons/logo-text.svg';
-import FormLogin from '../components/FormLogin';
+import { ReactComponent as LogoTextIcon } from 'icons/logo-text.svg';
+import FormRegistration from 'components/FormRegistration';
 
 export default function LoginView() {
   return (
@@ -20,25 +20,25 @@ export default function LoginView() {
               <Logo>
                 <LogoTextIcon />
               </Logo>
-              <FormLogin />
+              <FormRegistration />
             </Container>
           )}
           {matches.tablet && (
             <Container>
               <ImageContainer>
-                <img src="/images/loginTablet.png" alt="Logo" />
+                <img src="/images/registrationTablet.png" alt="Logo" />
                 <ImageText>Finance App</ImageText>
               </ImageContainer>
-              <FormLogin />
+              <FormRegistration />
             </Container>
           )}
           {matches.desktop && (
             <Container>
               <ImageContainer>
-                <img src="/images/loginDesktop.png" alt="Logo" />
+                <img src="/images/registrationDesktop.png" alt="Logo" />
                 <ImageText>Finance App</ImageText>
               </ImageContainer>
-              <FormLogin />
+              <FormRegistration />
             </Container>
           )}
         </>
