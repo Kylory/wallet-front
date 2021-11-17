@@ -14,7 +14,7 @@ const Statistic = () => {
   return (
      <>
      
-     <Media query={{ maxWidth: 768 }}> 
+     <Media query={{ maxWidth: 767 }}> 
      <Table>
      {lastFiveObj.map(({ date, type, category, comment, amount, balance }, index) => (
        <Tbody type={type} key={index}>
