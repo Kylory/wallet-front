@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsFetchingCurrentUser } from 'redux/auth/authSelectors';
+import {
+  getIsFetchingCurrentUser,
+  getIsLoggedIn,
+} from 'redux/auth/authSelectors';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 
 import LoginView from 'views/Login-registration/LoginView';
 import RegistrationView from 'views/Login-registration/RegistrationView';
@@ -13,6 +16,7 @@ import Statistic from 'components/Statistic';
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -24,9 +28,20 @@ function App() {
         <h1>Здесь будет лоадер</h1>
       ) : (
         <Routes>
-          <Route path="/registration" exact element={<RegistrationView />} />
-          <Route path="/login" exact element={<LoginView />} />
-          <Route path="/" element={<Layout />}>
+          <Route
+            path="/registration"
+            exact
+            element={!isLoggedIn ? <RegistrationView /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/login"
+            exact
+            element={!isLoggedIn ? <LoginView /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/"
+            element={isLoggedIn ? <Layout /> : <Navigate to="/login" />}
+          >
             <Route path="/" exact element={<Statistic />} />
             <Route path="statistics" exact element={<StatisticView />} />
             <Route path="*" element={<>404</>} />

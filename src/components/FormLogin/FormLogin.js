@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logIn } from 'redux/auth/authOperations';
 
 import { ReactComponent as LogoIcon } from 'icons/logo.svg';
 import { ReactComponent as EmailIcon } from 'icons/email.svg';
 import { ReactComponent as PasswordIcon } from 'icons/password.svg';
+// import s from './FormLogin.module.css';
 
 import {
   Logo,
@@ -16,6 +18,7 @@ import {
   ButtonSubmit,
   ButtonLink,
   LastIconContainer,
+  Underline,
 } from './styles';
 
 const FormLogin = () => {
@@ -57,6 +60,14 @@ const FormLogin = () => {
         <LogoIcon />
         <LogoText>Wallet</LogoText>
       </Logo>
+      {/* <div className={s.wrapper}>
+        <div className={s.inputData}>
+        <input type="text" required />
+        <Underline />
+        <div className={s.underline}></div>
+        <label>Name</label>
+        </div>
+      </div> */}
       <IconContainer>
         <Input
           type="email"
@@ -65,6 +76,7 @@ const FormLogin = () => {
           onChange={hadleChange}
           placeholder="E-mail"
         />
+        <Underline />
         <Icon>
           <EmailIcon />
         </Icon>
@@ -85,7 +97,9 @@ const FormLogin = () => {
       </LastIconContainer>
 
       <ButtonSubmit type="submit">Вход</ButtonSubmit>
-      <ButtonLink type="button">Регистрация</ButtonLink>
+      <Link to="/registration">
+        <ButtonLink type="button">Регистрация</ButtonLink>
+      </Link>
     </Form>
   );
 };

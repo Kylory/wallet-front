@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import thunkMiddleware, { ThunkAction } from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,

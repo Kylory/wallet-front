@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logIn, registration } from 'redux/auth/authOperations';
 
 import { ReactComponent as LogoIcon } from 'icons/logo.svg';
@@ -130,7 +131,9 @@ const FormRegistration = () => {
       </LastIconContainer>
 
       <ButtonSubmit type="submit">Регистрация</ButtonSubmit>
-      <ButtonLink type="button">Вход</ButtonLink>
+      <Link to="/login">
+        <ButtonLink type="button">Вход</ButtonLink>
+      </Link>
     </Form>
   );
 };
