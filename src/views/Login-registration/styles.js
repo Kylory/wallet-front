@@ -17,21 +17,21 @@ export const Container = styled.section`
     height: auto;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     flex-direction: row;
     height: 100%;
   }
 `;
 
 export const ImageContainer = styled.div`
-  @media (min-width: 768px) and (max-width: 1199px) {
+  @media (min-width: 768px) and (max-width: 1279px) {
     display: flex;
     align-items: center;
     margin: 50px 0;
     width: 540px;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +49,7 @@ export const ImageText = styled.p`
   line-height: 45px;
   margin-left: 40px;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     margin-left: 0;
     margin-top: 28px;
   }
