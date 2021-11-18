@@ -35,7 +35,7 @@ function App() {
               />
               <Route path="/login" exact element={<LoginView />} />
               <Route path="/" element={<Layout />}>
-                <Route path="/" exact element={<Balance />} />
+                {/* <Route path="/" exact element={<Balance />} /> */}
                 <Route path="/" exact element={<Statistic />} />
                 <Route path="statistics" exact element={<StatisticView />} />
                 <Route path="exchange" exact element={<ExchangeRate />} />
