@@ -31,7 +31,7 @@ const ExchangeRate = () => {
           </tr>
         </TableHead>
         {error && (
-          <h1
+          <h3
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -40,7 +40,7 @@ const ExchangeRate = () => {
           >
             {error.message} <br />
             Reload the page
-          </h1>
+          </h3>
         )}
         {loading && (
           <tbody>

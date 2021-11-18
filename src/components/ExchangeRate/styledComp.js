@@ -5,10 +5,11 @@ const imgUrl = require('../../icons/background.svg').default;
 const Wrapper = styled.div`
   margin-bottom: 0;
   ${breakpointMax.m`
-    // display:none;
+    margin-left: auto;
+    margin-right: auto;
   `};
   ${breakpointMax.l`
-  margin-top: 20px;
+    margin-top: 20px;
   `};
 `;
 

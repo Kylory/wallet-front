@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoint, breakpointMax } from '../../styles/breakpoint';
+import { breakpoint } from '../../styles/breakpoint';
 
 const Wrapper = styled.div`
   width: 280px;
@@ -7,11 +7,12 @@ const Wrapper = styled.div`
   background-color: white;
   border-radius: 30px;
   margin-bottom: 30px;
+  ${breakpoint.s`
+    margin-right: auto;
+    margin-left: auto;
+  `};
   ${breakpoint.m`
     width: 334px;
-  `};
-  ${breakpointMax.l`
-    // width: 334px;
   `};
   ${breakpoint.l`
     width: 350px;
