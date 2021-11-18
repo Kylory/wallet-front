@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import fetchExchangeRate from '../services/exchangeRateAPI/exchangeRateAPI';
+import fetchExchangeRate from '../../services/exchangeRateAPI/exchangeRateAPI';
 // import { useDispatch } from 'react-redux';
 
 import { Wrapper, Table, TableHead, StyledTh, StyledTd } from './styledComp';
 
 const ExchangeRate = () => {
+  const [loading, setLoading] = useState(false);
   const [currencyArr, setCurrencyArr] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    fetchExchangeRate().then(currArr => {
-      currArr.pop();
-      setCurrencyArr(currArr);
-    });
+    setLoading(true);
+    fetchExchangeRate()
+      .then(currArr => {
+        currArr.pop();
+        setCurrencyArr(currArr);
+      })
+      .catch(error => setError(error))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
-  // console.log(currencyArr[0].buy.slice(0, 5));
   return (
     <Wrapper>
       <Table>
@@ -23,7 +30,25 @@ const ExchangeRate = () => {
             <StyledTh>Продажа</StyledTh>
           </tr>
         </TableHead>
-
+        {error && (
+          <h3
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              color: 'white',
+            }}
+          >
+            {error.message} <br />
+            Reload the page
+          </h3>
+        )}
+        {loading && (
+          <tbody>
+            <tr>
+              <StyledTd>Loading...</StyledTd>
+            </tr>
+          </tbody>
+        )}
         <tbody>
           {currencyArr.map(({ ccy, buy, sale }) => (
             <tr key={ccy}>

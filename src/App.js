@@ -12,11 +12,13 @@ import RegistrationView from 'views/Login-registration/RegistrationView';
 import { StatisticView } from 'views/Statistics/StatisticView';
 import { Layout } from 'views/Layout';
 import Statistic from 'components/Statistic';
+import ExchangeRate from 'components/ExchangeRate';
 
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const viewPort = window.screen.availWidth;
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -30,20 +32,22 @@ function App() {
         <Routes>
           <Route
             path="/registration"
-            exact
             element={!isLoggedIn ? <RegistrationView /> : <Navigate to="/" />}
           />
           <Route
             path="/login"
-            exact
             element={!isLoggedIn ? <LoginView /> : <Navigate to="/" />}
           />
           <Route
             path="/"
             element={isLoggedIn ? <Layout /> : <Navigate to="/login" />}
           >
-            <Route path="/" exact element={<Statistic />} />
-            <Route path="statistics" exact element={<StatisticView />} />
+            <Route path="/" element={<Statistic />} />
+            <Route path="statistics" element={<StatisticView />} />
+            <Route
+              path="/exchange"
+              element={viewPort <= 768 ? <ExchangeRate /> : <Navigate to="/" />}
+            />
             <Route path="*" element={<>404</>} />
           </Route>
         </Routes>
