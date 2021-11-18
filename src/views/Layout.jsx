@@ -6,6 +6,7 @@ import {
   MainWrapperStyles,
   PageWrapper,
   AlignWrapper,
+  LineWrapper,
 } from './MainWrapperStyles';
 import Fonts from 'styles/fonts';
 import GlobalStyle from 'styles/normalize';
@@ -23,8 +24,10 @@ export const Layout = () => {
       <Fonts />
       <GlobalStyle rwdVersion />
       <MainWrapperStyles>
+        <Header />
         <PageWrapper>
-          <Header />
+          <LineWrapper />
+          {/* <Header /> */}
           <ContentWrapper>
             <Media query={{ maxWidth: 767 }}>
               <>
