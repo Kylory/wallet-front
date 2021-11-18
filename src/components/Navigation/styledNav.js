@@ -34,7 +34,7 @@ const StyledLink = styled(NavLink)`
   font-size: 18px;
   line-height: 1.5;
   color: #000000;
-  ${breakpoint.s`
+  ${breakpointMax.m`
     &:not(:last-child) {
       margin-right: 30px;
     }

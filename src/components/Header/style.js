@@ -16,7 +16,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   padding: 15px 0;
   background: white;
-  ${breakpoint.s`
+  ${breakpointMax.m`
     padding: 15px 20px;
   `};
   ${breakpoint.m`
