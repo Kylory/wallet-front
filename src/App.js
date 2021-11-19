@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsFetchingCurrentUser } from 'redux/auth/authSelectors';
+import {
+  getIsFetchingCurrentUser,
+  getIsLoggedIn,
+} from 'redux/auth/authSelectors';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Media from 'react-media';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 
 import LoginView from 'views/Login-registration/LoginView';
 import RegistrationView from 'views/Login-registration/RegistrationView';
@@ -15,6 +17,8 @@ import ExchangeRate from 'components/ExchangeRate';
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const viewPort = window.screen.availWidth;
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -24,42 +28,30 @@ function App() {
       {isFetchingCurrentUser ? (
         <h1>Здесь будет лоадер</h1>
       ) : (
-        <>
-          <Media query={{ maxWidth: 767 }}>
-            <Routes>
-              <Route
-                path="/registration"
-                exact
-                element={<RegistrationView />}
-              />
-              <Route path="/login" exact element={<LoginView />} />
-              <Route path="/" element={<Layout />}>
+        
+        <Routes>
+          <Route
+            path="/registration"
+            element={!isLoggedIn ? <RegistrationView /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/login"
+            element={!isLoggedIn ? <LoginView /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/"
+            element={isLoggedIn ? <Layout /> : <Navigate to="/login" />}
+          >
+            <Route path="/" element={<Statistic />} />
+            <Route path="statistics" element={<StatisticView />} />
+            <Route
+              path="/exchange"
+              element={viewPort <= 768 ? <ExchangeRate /> : <Navigate to="/" />}
+            />
+            <Route path="*" element={<>404</>} />
+          </Route>
+        </Routes>
 
-
-
-                <Route path="/" exact element={<Statistic />} />
-                <Route path="statistics" exact element={<StatisticView />} />
-                <Route path="exchange" exact element={<ExchangeRate />} />
-                <Route path="*" element={<>404</>} />
-              </Route>
-            </Routes>
-          </Media>
-          <Media query={{ minWidth: 768 }}>
-            <Routes>
-              <Route
-                path="/registration"
-                exact
-                element={<RegistrationView />}
-              />
-              <Route path="/login" exact element={<LoginView />} />
-              <Route path="/" element={<Layout />}>
-                <Route path="/" exact element={<Statistic />} />
-                <Route path="statistics" exact element={<StatisticView />} />
-                <Route path="*" element={<>404</>} />
-              </Route>
-            </Routes>
-          </Media>
-        </>
       )}
     </BrowserRouter>
   );

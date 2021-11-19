@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   `};
   ${breakpoint.m`
     width: 334px;
+    // height: 80px;
   `};
   ${breakpoint.l`
     width: 350px;

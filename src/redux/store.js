@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import thunkMiddleware, { ThunkAction } from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -14,6 +14,7 @@ import {
 import { statisticsReducer } from './reducers/statistic/statisticReducer';
 import { statisticsHomeReducer } from './homeTable/statisticHomeReducer';
 import authReducer from './auth/authSlice';
+import { balanceReducer } from './balance/balanceReducer';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ let reducers = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   statistics: statisticsReducer,
   statisticsHome: statisticsHomeReducer,
+  balance: balanceReducer,
 });
 
 // @ts-ignore

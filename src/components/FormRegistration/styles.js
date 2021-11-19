@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../styles/breakpoint';
+import { breakpoint } from 'styles/breakpoint';
 
 //! Logo
 export const Logo = styled.div`

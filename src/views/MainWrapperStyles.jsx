@@ -39,7 +39,7 @@ export const ContentWrapper = styled.section`
   /* justify-content: space-between; */
 `;
 export const AlignWrapper = styled.div`
-  ${breakpoint.s`
+  ${breakpointMax.m`
     // margin-right: 0;
     margin-left: auto;
     margin-right: auto;
