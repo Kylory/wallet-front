@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import fetchExchangeRate from '../../services/exchangeRateAPI/exchangeRateAPI';
-// import { useDispatch } from 'react-redux';
+import fetchExchangeRate from 'services/exchangeRateAPI/exchangeRateAPI';
+import moneyService from 'services/moneyService/moneyService';
 
 import { Wrapper, Table, TableHead, StyledTh, StyledTd } from './styledComp';
 
@@ -10,10 +10,21 @@ const ExchangeRate = () => {
   const [error, setError] = useState(null);
   useEffect(() => {
     setLoading(true);
+    let newCurrArr = [];
     fetchExchangeRate()
       .then(currArr => {
         currArr.pop();
-        setCurrencyArr(currArr);
+
+        currArr.map(item => {
+          const newBuy = moneyService(Number(item.buy));
+          const newSale = moneyService(Number(item.sale));
+          const newCcy = item.ccy;
+          const newItem = { newCcy, newBuy, newSale };
+          // console.log(newItem);
+          return newCurrArr.push(newItem);
+        });
+        // console.log(newCurrArr);
+        setCurrencyArr(newCurrArr);
       })
       .catch(error => setError(error))
       .finally(() => {
@@ -33,8 +44,11 @@ const ExchangeRate = () => {
         {error && (
           <h3
             style={{
+              paddingLeft: '35px',
+              width: '235px',
+              height: '160px',
+              alignItems: 'center',
               display: 'flex',
-              justifyContent: 'center',
               color: 'white',
             }}
           >
@@ -50,11 +64,11 @@ const ExchangeRate = () => {
           </tbody>
         )}
         <tbody>
-          {currencyArr.map(({ ccy, buy, sale }) => (
-            <tr key={ccy}>
-              <StyledTd>{ccy}</StyledTd>
-              <StyledTd>{buy}</StyledTd>
-              <StyledTd>{sale}</StyledTd>
+          {currencyArr.map(({ newCcy, newBuy, newSale }) => (
+            <tr key={newCcy}>
+              <StyledTd>{newCcy}</StyledTd>
+              <StyledTd>{newBuy}</StyledTd>
+              <StyledTd>{newSale}</StyledTd>
             </tr>
           ))}
         </tbody>

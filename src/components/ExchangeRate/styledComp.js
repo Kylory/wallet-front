@@ -26,7 +26,7 @@ const Table = styled.table`
   background-image: url(${imgUrl});
   background-repeat: no-repeat;
   background-position: bottom;
-  ${breakpoint.s`
+  ${breakpointMax.m`
     width: 280px;
     height: 174px;
     background-size: 280px 93px;
@@ -47,20 +47,23 @@ const Table = styled.table`
 const TableHead = styled.thead`
   background-color: #626ce5;
   color: #fff;
+  ${breakpoint.m`
+    height: 50px;
+  `};
 `;
 
 const StyledTh = styled.th`
   text-align: center;
-  ${breakpoint.s`
+  ${breakpointMax.m`
     padding: 10px;
     // padding-left: 17px;
   `};
   ${breakpoint.m`
-    padding-left: 20px;
+    // padding-left: 20px;
   `};
   ${breakpoint.l`
     padding: 19px;
-    padding-left: 30px;
+    padding-left: 29px;
   `};
 `;
 
@@ -69,17 +72,17 @@ const StyledTd = styled.td`
   line-height: 1.5;
   text-align: start;
   color: #fff;
-  ${breakpoint.s`
+  ${breakpointMax.m`
     padding-left: 17px;
   `};
   ${breakpoint.m`
     padding: 10px;
-    padding-left: 28px;
+    padding-left: 31px;
     text-align: start;
   `};
   ${breakpoint.l`
     padding: 13px;
-    padding-left: 30px;
+    padding-left: 32px;
   `};
 `;
 
