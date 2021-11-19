@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { closeModalTransaction } from '../../../redux/transactions/transactions-actions';
 // import TransactionAddForm from '../TransactionAddForm';
 import Modal from '../Modal';
-import './ModalAddTransaction.scss';
+import './ModalAddTransaction.css';
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
