@@ -2,8 +2,17 @@ import styled from 'styled-components';
 import { fontColorsStatistic } from '../../styles/colors';
 
 export const Table = styled.table`
-  display: inline-block;
+display: inline-block;
+width: 280px;
+margin: auto;
+@media (min-width: 768px) {
+  width: 688px;
+}
+@media (min-width: 1280px) {
   width: 700px;
+  margin-top: 45px;
+  margin-left: 30px;
+} ;
 `;
 export const Thead = styled.thead`
   display: block;
@@ -56,7 +65,9 @@ export const Td = styled.td`
 `;
 
 export const Tbody = styled.tbody`
-  // text-align: center;
+
+  background-color: white;
+ 
   display: inline-block;
   width: 100%;
   margin-bottom: 10px;
@@ -66,6 +77,7 @@ export const Tbody = styled.tbody`
   border-color: ${({ type }) =>
     type === '+' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
   @media (min-width: 768px) {
+    background-color: transparent;
     margin: none;
     border: none;
     text-align: center;

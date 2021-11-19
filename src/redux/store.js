@@ -12,7 +12,7 @@ import {
   // REGISTER,
 } from 'redux-persist';
 import { statisticsReducer } from './reducers/statistic/statisticReducer';
-import { statisticsHomeReducer } from './reducers/statistic/homeTable/statisticHomeReducer';
+import { statisticsHomeReducer } from './homeTable/statisticHomeReducer';
 import authReducer from './auth/authSlice';
 
 const authPersistConfig = {

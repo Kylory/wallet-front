@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getStatisticsHome } from '../../redux/reducers/statistic/homeTable/selector.js';
+import { getStatisticsHome } from '../../redux/homeTable/selector.js';
 import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
@@ -8,6 +8,7 @@ import Balance from 'components/Balance/Balance.js';
 const Statistic = () => {
   const content = useSelector(state => getStatisticsHome(state));
   const lastFiveObj = content.slice(-1 - 4);
+  
 
   return (
     <>
