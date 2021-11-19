@@ -6,7 +6,6 @@ export const closeModalTransaction = createAction('transactions/closeModalTransa
 export const fetchTransactionRequest = createAction('transactions/fetchTransactionRequest');
 export const fetchTransactionSuccess = createAction('transactions/fetchTransactionSuccess');
 export const fetchTransactionError = createAction('transactions/fetchTransactionError');
-
 export const addTransactionRequest = createAction('transactions/addTransactionRequest');
 export const addTransactionSuccess = createAction('transactions/addTransactionSuccess');
 export const addTransactionError = createAction('transactions/addTransactionError');
