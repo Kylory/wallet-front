@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMonth } from '../../redux/reducers/statistic/selectors';
 
 import Select from 'react-select';
@@ -7,9 +7,17 @@ import { customStyles,SelectWrapper, StatisticsWrapper } from './styles';
 import { TableStatistics } from '../../components/TableStatistics/TableStatistics';
 import { useMedia } from '../../hooks/useMedia';
 import {mediaQuery} from '../../styles/breakpoint'
+import { getTransactionCategories } from '../../redux/reducers/statistic/statisticReducer';
 
 
 export const StatisticView = () => {
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getTransactionCategories())
+  },[])
+
+
   const month = useSelector(state => getMonth(state));
   const desktopScreen = useMedia(mediaQuery.m)
   const year = [
