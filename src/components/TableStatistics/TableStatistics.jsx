@@ -7,6 +7,7 @@ import { TotalStatistics } from './TableFooter/TableFotter';
 
 
 
+
 export const TableStatistics = () => {
   return (
     <Table>
