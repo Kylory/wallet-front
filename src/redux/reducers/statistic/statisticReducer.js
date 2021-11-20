@@ -4,7 +4,14 @@ const IS_LOADING = 'statistics/IS_LOADING'
 const IS_ERROR = 'statistics/ERROR_LOADING'
 const SET_ALL_TRANSACTIONS = 'statistics/SET_ALL_TRANSACTIONS'
 
+
+
+
+
 const initialState = {
+  homeState: [
+    
+  ],
   statisticList: [
     { color: statisticColors.basicExpenses, tittle: 'Основные расходы', value: 2000 },
     { color: statisticColors.products, tittle: 'Продукты', value: 1000 },
@@ -43,10 +50,13 @@ export const statisticsReducer = (state = initialState, action) => {
   switch (action.type) {
     case IS_LOADING: return {...state, isLoading: action.payload}
     case IS_ERROR: return  {...state, errors: action.payload}
+    case SET_ALL_TRANSACTIONS: return {...state, homeState: action.payload}
     default:
       return state;
   }
 };
+
+
 
 
 const loading = (payload) => {
@@ -55,8 +65,8 @@ const loading = (payload) => {
 const errors = (payload) => {
   return {type: IS_ERROR, payload}
 }
-const setTransactions = (payload) => {
-  return {type: SET_ALL_TRANSACTIONS, payload}
+const homeState = (payload) => {
+  return { type:SET_ALL_TRANSACTIONS, payload}
 }
 
 export const getAllTransactions = () => {
@@ -68,7 +78,7 @@ export const getAllTransactions = () => {
       try {
         const response = await transactionAPI.getTransactions(token)
         if (response.status = 200) {
-          console.log(response.ResponseBody)
+          dispatch(homeState(response.ResponseBody.allTransactions))
         }
       }catch (e) {
         dispatch(errors(e.response))
@@ -83,7 +93,7 @@ export const getTransactionCategories = () => {
   return (
     async (dispatch,getState) => {
       const token = getState().auth.token
-      debugger
+      
       if(!token) return
       dispatch(loading(true))
       try {

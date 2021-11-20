@@ -23,12 +23,12 @@ function App() {
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-
   return (
     <BrowserRouter>
       {isFetchingCurrentUser ? (
         <h1>Здесь будет лоадер</h1>
       ) : (
+        
         <Routes>
           <Route
             path="/registration"
@@ -51,6 +51,7 @@ function App() {
             <Route path="*" element={<>404</>} />
           </Route>
         </Routes>
+
       )}
     </BrowserRouter>
   );

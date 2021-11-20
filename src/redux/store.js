@@ -12,7 +12,6 @@ import {
   // REGISTER,
 } from 'redux-persist';
 import { statisticsReducer } from './reducers/statistic/statisticReducer';
-import { statisticsHomeReducer } from './reducers/statistic/homeTable/statisticHomeReducer';
 import authReducer from './auth/authSlice';
 import { balanceReducer } from './balance/balanceReducer';
 
@@ -25,7 +24,6 @@ const authPersistConfig = {
 let reducers = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   statistics: statisticsReducer,
-  statisticsHome: statisticsHomeReducer,
   balance: balanceReducer,
 });
 
