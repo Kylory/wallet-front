@@ -1,20 +1,21 @@
-import styled from 'styled-components';
-
-const TableFoot = styled.tfoot`
-font-weight: bold;
-font-size: 16px;
-`;
-
+import { TableFoot, TableRowFooter, TdFooterLeft } from '../styles';
+import { useSelector } from 'react-redux';
+import {getIncomes} from '../../../redux/reducers/statistic/selectors';
 
 export const TotalStatistics = () => {
+const incomes = useSelector(state => getIncomes(state))
+
  return (
    <TableFoot>
-     <tr>
-       <td>Расходы</td>
-     </tr>
-     <tr>
-       <td>Доходы</td>
-     </tr>
+     {incomes.map(({title, value}, index)=> {
+       return (
+         <TableRowFooter key={index}>
+           <td>{title === "income" ? 'Доходы' : 'Расходы'}</td>
+           <TdFooterLeft title={title}>{value}</TdFooterLeft>
+         </TableRowFooter>
+       )
+     })}
+
    </TableFoot>
  )
 
