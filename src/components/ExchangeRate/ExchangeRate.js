@@ -1,8 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+
 import fetchExchangeRate from 'services/exchangeRateAPI/exchangeRateAPI';
 import moneyService from 'services/moneyService/moneyService';
 
-import { Wrapper, Table, TableHead, StyledTh, StyledTd } from './styledComp';
+import CircleLoader from 'react-spinners/CircleLoader';
+
+import {
+  Wrapper,
+  Table,
+  TableHead,
+  StyledTh,
+  StyledTd,
+  StyledTbodyLoader,
+} from './styledComp';
+
+const override = css`
+  display: block;
+`;
 
 const ExchangeRate = () => {
   const [loading, setLoading] = useState(false);
@@ -56,22 +71,25 @@ const ExchangeRate = () => {
             Reload the page
           </h3>
         )}
-        {loading && (
-          <tbody>
+        {loading ? (
+          <StyledTbodyLoader>
             <tr>
-              <StyledTd>Loading...</StyledTd>
+              <td>
+                <CircleLoader color={'#24CCA7'} size={50} css={override} />
+              </td>
             </tr>
+          </StyledTbodyLoader>
+        ) : (
+          <tbody>
+            {currencyArr.map(({ newCcy, newBuy, newSale }) => (
+              <tr key={newCcy}>
+                <StyledTd>{newCcy}</StyledTd>
+                <StyledTd>{newBuy}</StyledTd>
+                <StyledTd>{newSale}</StyledTd>
+              </tr>
+            ))}
           </tbody>
         )}
-        <tbody>
-          {currencyArr.map(({ newCcy, newBuy, newSale }) => (
-            <tr key={newCcy}>
-              <StyledTd>{newCcy}</StyledTd>
-              <StyledTd>{newBuy}</StyledTd>
-              <StyledTd>{newSale}</StyledTd>
-            </tr>
-          ))}
-        </tbody>
       </Table>
     </Wrapper>
   );
