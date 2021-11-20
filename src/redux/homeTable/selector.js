@@ -1,1 +1,0 @@
-export const getStatisticsHome = state => state.statisticsHome

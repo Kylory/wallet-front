@@ -1,20 +1,42 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getStatisticsHome } from '../../redux/homeTable/selector.js';
+import { getStatisticsHome } from '../../redux/reducers/statistic/selectors';
 import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 
 const Statistic = () => {
-
+  const content = useSelector(getStatisticsHome);
+  const lastFiveObj = content.slice(-1 - 4);
+  
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllTransactions())
-  },[])
-  const content = useSelector(state => getStatisticsHome(state));
-  const lastFiveObj = content.slice(-1 - 4);
-  
+  },[dispatch])
+let array =[]
+  lastFiveObj.map(item => {
+    
+  const comment = item.comment;
+  const type = item.type;
+  const amount = item.amount;
+  const balance = item.balance;
+  const category = item.category;
+    
+  let dateItem = [];
+
+const year = new Date(item.date).getFullYear()
+const month = new Date(item.date).getMonth()+1
+const day = new Date(item.date).getDate()
+    
+    
+    dateItem.push(day, month, year)
+    
+    const date = dateItem.join('.')
+    const newItem = {date, comment , type, amount, balance, category}
+    array.push(newItem)
+  });
+ 
 
   return (
     <>
@@ -22,8 +44,8 @@ const Statistic = () => {
         <>
           <Balance />
           <Table>
-            {lastFiveObj.map(
-              ({ date, type, category, comment, amount, balance }, index) => (
+            {array.map(
+              ({ date, type, category, comment = '-', amount, balance }, index) => (
                 <Tbody type={type} key={index}>
                   <Tr>
                     <Th>Дата</Th>
@@ -68,8 +90,8 @@ const Statistic = () => {
             </TrHead>
           </Thead>
           <Tbody>
-            {lastFiveObj.map(
-              ({ date, type, category, comment, amount, balance }, index) => (
+            {array.map(
+              ({ date, type, category, comment ='-', amount, balance }, index) => (
                 <Tr key={index}>
                   <Td>{date}</Td>
                   <Td>{type}</Td>
