@@ -67,6 +67,18 @@ const StyledTh = styled.th`
   `};
 `;
 
+const StyledTbodyLoader = styled.tbody`
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  ${breakpointMax.m`
+    width: 280px;
+  `};
+  ${breakpoint.m`
+    width: 334px;
+  `};
+`;
+
 const StyledTd = styled.td`
   font-size: 16px;
   line-height: 1.5;
@@ -81,9 +93,10 @@ const StyledTd = styled.td`
     text-align: start;
   `};
   ${breakpoint.l`
+    width: 115px;
     padding: 13px;
     padding-left: 32px;
   `};
 `;
 
-export { Wrapper, Table, TableHead, StyledTh, StyledTd };
+export { Wrapper, Table, TableHead, StyledTh, StyledTd, StyledTbodyLoader };
