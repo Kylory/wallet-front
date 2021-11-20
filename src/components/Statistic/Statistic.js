@@ -1,11 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { getStatisticsHome } from '../../redux/homeTable/selector.js';
 import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
+import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 
 const Statistic = () => {
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllTransactions())
+  },[])
   const content = useSelector(state => getStatisticsHome(state));
   const lastFiveObj = content.slice(-1 - 4);
   
