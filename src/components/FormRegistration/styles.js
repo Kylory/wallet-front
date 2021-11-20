@@ -1,17 +1,25 @@
 import styled from 'styled-components';
+import { breakpoint } from 'styles/breakpoint';
 
 //! Logo
 export const Logo = styled.div`
   display: none;
 
-  @media (min-width: 768px) {
+  ${breakpoint.m`
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
 
     width: 180px;
     height: 40px;
-  }
+  `}/* @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    width: 180px;
+    height: 40px;
+  } */
 `;
 
 export const LogoText = styled.p`
@@ -30,9 +38,11 @@ export const IconContainer = styled.div`
 `;
 
 export const LastIconContainer = styled(IconContainer)`
-  @media (min-width: 768px) {
+  ${breakpoint.m`
     margin-bottom: 50px;
-  }
+  `}/* @media (min-width: 768px) {
+    margin-bottom: 50px;
+  } */
 `;
 
 export const Icon = styled.div`
@@ -55,16 +65,24 @@ export const Form = styled.form`
   align-items: center;
   flex-direction: column;
 
-  @media (min-width: 768px) {
+  ${breakpoint.m`
     padding: 45px 65px 60px;
     width: 540px;
     border: 1px solid #e0e0e0;
     border-radius: 20px;
-  }
+  `}
+  /* @media (min-width: 768px) {
+    padding: 45px 65px 60px;
+    width: 540px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+  } */
 
-  @media (min-width: 1200px) {
+  ${breakpoint.m`
     margin-bottom: 50px;
-  }
+  `} /* @media (min-width: 1200px) {
+    margin-bottom: 50px;
+  } */
 `;
 
 export const Input = styled.input`
@@ -72,6 +90,7 @@ export const Input = styled.input`
   border: none;
   border-bottom: 1px solid #e0e0e0;
   width: 280px;
+  outline: none;
 
   &::placeholder {
     // font-size: 18px;
@@ -80,9 +99,11 @@ export const Input = styled.input`
     color: #bdbdbd;
   }
 
-  @media (min-width: 768px) {
+  ${breakpoint.m`
     width: 410px;
-  }
+  `}/* @media (min-width: 768px) {
+    width: 410px;
+  } */
 `;
 
 export const ButtonSubmit = styled.button`
@@ -100,11 +121,26 @@ export const ButtonSubmit = styled.button`
 
   color: #ffffff;
   background: #24cca7;
+  border: none;
   border-radius: 20px;
+  cursor: pointer;
 
-  @media (min-width: 768px) {
-    width: 300px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: #4a56e2;
+    background: #fff;
+    border: 1px solid #4a56e2;
   }
+
+  ${breakpoint.m`
+    width: 300px;
+  `}/* @media (min-width: 768px) {
+    width: 300px;
+  } */
 `;
 
 export const ButtonLink = styled.button`
@@ -123,8 +159,11 @@ export const ButtonLink = styled.button`
   background: #fff;
   border: 1px solid #4a56e2;
   border-radius: 20px;
+  cursor: pointer;
 
-  @media (min-width: 768px) {
+  ${breakpoint.m`
     width: 300px;
-  }
+  `}/* @media (min-width: 768px) {
+    width: 300px;
+  } */
 `;

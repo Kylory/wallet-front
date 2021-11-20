@@ -16,7 +16,8 @@ export const fontColorsStatistic = {
 }
 
 export const viewColors = {
-
+  gray4: '#BDBDBD',
+  black: "#000000",
   white: '#FFFFFF',
   whiteGray: '#DCDCDF'
 }
