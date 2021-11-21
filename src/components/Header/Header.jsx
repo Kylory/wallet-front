@@ -6,10 +6,13 @@ import { ExitWrapper, HeaderWrapper, LogoHeader } from './style';
 import { useLocation } from 'react-router-dom';
 import { fontColorsStatistic } from '../../styles/colors'
 import Swal from 'sweetalert2'
-
+import { useDispatch } from 'react-redux';
+import {logOut} from '../../redux/auth/authOperations'
 export const Header = () => {
+  const dispatch = useDispatch()
 
-  const logOut = function() {
+
+  const logOutHandler = function() {
     Swal.fire({
       title: 'Вы действительно хотите выйти ?',
       icon: 'question',
@@ -20,11 +23,7 @@ export const Header = () => {
       cancelButtonText: 'Нет'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Прощайте)))',
-          'Мы будем скучать по вам',
-          'success'
-        )
+        dispatch(logOut())
       }
     })
   }
@@ -39,7 +38,7 @@ export const Header = () => {
         <LogoIcon />
         <LogoText>Wallet</LogoText>
       </LogoHeader>
-      <ExitWrapper onClick={logOut}>
+      <ExitWrapper onClick={logOutHandler}>
         <p>Имя</p>
         <ExitIcon />
       </ExitWrapper>

@@ -19,7 +19,7 @@ export const StatisticView = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTransactionCategories());
-  }, []);
+  }, [dispatch]);
 
   const handleMonthChange = (value) => {
     const monthIndexSelect = month.findIndex(i => i.value === value.value);
@@ -49,7 +49,7 @@ export const StatisticView = () => {
    }
       dispatch(getTransactionsByPeriod({month:monthSelect.numberValue, year:yearSelect.value}));
 
-  }, [monthSelect, yearSelect]);
+  }, [monthSelect, yearSelect, dispatch]);
   return (
     <StatisticsWrapper>
       <SelectWrapper>
