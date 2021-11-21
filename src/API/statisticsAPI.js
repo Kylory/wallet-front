@@ -22,4 +22,15 @@ export const transactionAPI = {
       }
     }).then(r => r.data)
   },
+  getTransactionByPeriod(token, data) {
+    return axios({
+      method: "POST",
+      url: `${URL}/period`,
+      data: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    }).then(r => r.data)
+  },
+
 }
