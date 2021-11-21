@@ -40,7 +40,7 @@ export default function TransactionAddForm() {
   });
 
   const [fullState, setFullState] = useState({
-    checked: true,
+    checked: false,
     type: '',
     amount: '',
     comment: '',
