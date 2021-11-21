@@ -109,3 +109,14 @@ export const Tr = styled.tr`
 export const TrHead = styled.tr`
   height: 52px;
 `;
+export const Text = styled.h2`
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: ${fontColorsStatistic.expenses};
+  @media (min-width: 1280px) {
+    padding-left: 50px;
+  } ;
+`;
+
