@@ -7,6 +7,8 @@ import {
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 
+import CircleLoader from 'react-spinners/CircleLoader';
+
 import LoginView from 'views/Login-registration/LoginView';
 import RegistrationView from 'views/Login-registration/RegistrationView';
 import { StatisticView } from 'views/Statistics/StatisticView';
@@ -23,12 +25,27 @@ function App() {
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-
   return (
     <BrowserRouter>
       {isFetchingCurrentUser ? (
-        <h1>Здесь будет лоадер</h1>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.55)',
+            zIndex: '1000',
+          }}
+        >
+          <CircleLoader color={'#24CCA7'} size={150} />
+        </div>
       ) : (
+        
         <Routes>
           <Route
             path="/registration"
@@ -51,6 +68,7 @@ function App() {
             <Route path="*" element={<>404</>} />
           </Route>
         </Routes>
+
       )}
     </BrowserRouter>
   );
