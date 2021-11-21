@@ -7,7 +7,9 @@ import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 
 const Statistic = () => {
+
   const content = useSelector(getStatisticsHome);
+ 
   const useContent = () => {
     if(!content){
       const message = [];
@@ -35,16 +37,37 @@ let array =[]
   const comment = item.comment;
   const amount = item.amount;
   const balance = item.balance;
-  const category = item.category;
-  // const listCategory = () =>{
-  //   if(exp === 'main'){
-  //     return exp === 'rgd';
-  //   }
-  //   else if(exp ==='car') {
-  //     return exp === 'sdfsdfsdffds';
-  //   }
-  // }
-  // const category = listCategory;
+
+  const listCategory = () =>{
+    if(item.category === 'main'){
+      return item.category = 'Основные расходы';
+    }
+    else if(item.category ==='car') {
+      return item.category = 'Машина';
+    }
+    else if(item.category ==='food') {
+      return item.category = 'Продукты';
+    }
+    else if(item.category ==='evolution') {
+      return item.category = 'Забота о себе';
+    }
+    else if(item.category ==='children') {
+      return item.category = 'Забота о детях';
+    }
+    else if(item.category ==='home') {
+      return item.category = 'Товары для дома';
+    }
+    else if(item.category ==='education') {
+      return item.category = 'Образование';
+    }
+    else if(item.category ==='other') {
+      return item.category = 'Другое';
+    }
+    return item.category
+  };
+
+  const category = listCategory();
+  
   const dateItem = item.date;
 
   const DateAll = () => {
@@ -60,7 +83,7 @@ let array =[]
  
 const date = DateAll();
 
-    const newItem = {date, comment , type , amount, balance, category}
+    const newItem = {date, comment , type , amount, balance, category};
     array.push(newItem);
   });
  
