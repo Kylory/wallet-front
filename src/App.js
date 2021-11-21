@@ -45,7 +45,6 @@ function App() {
           <CircleLoader color={'#24CCA7'} size={150} />
         </div>
       ) : (
-        
         <Routes>
           <Route
             path="/registration"
@@ -68,7 +67,6 @@ function App() {
             <Route path="*" element={<>404</>} />
           </Route>
         </Routes>
-
       )}
     </BrowserRouter>
   );
