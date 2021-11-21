@@ -22,7 +22,7 @@ export default function Navigation() {
         <>
           {matches.mobile && (
             <Wrapper>
-              <StyledLink to="/" exact>
+              <StyledLink to="/">
                 <IconWrapper>
                   <HomeIconMob width="38" height="38" />
                 </IconWrapper>
@@ -41,7 +41,7 @@ export default function Navigation() {
           )}
           {matches.tablet && (
             <Wrapper>
-              <StyledLink to="/" exact>
+              <StyledLink to="/">
                 <IconWrapper>
                   <HomeIcon width="18" height="18" />
                 </IconWrapper>
@@ -57,7 +57,7 @@ export default function Navigation() {
           )}
           {matches.desktop && (
             <Wrapper>
-              <StyledLink to="/" exact>
+              <StyledLink to="/">
                 <IconWrapper>
                   <HomeIcon width="18" height="18" />
                 </IconWrapper>
