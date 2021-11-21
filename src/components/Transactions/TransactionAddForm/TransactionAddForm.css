@@ -1,35 +1,40 @@
-@import '../../../stylesheet/vars.scss';
+/* @import '../../../stylesheet/vars.scss'; */
 
-.TransactionAddForm__closeBtn {
-  @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
+  .TransactionAddForm__closeBtn {
     display: none;
   }
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  background-color: #fff;
-  display: flex;
-  cursor: pointer;
-  border: none;
+
+  .TransactionAddForm__closeBtn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: #fff;
+    display: flex;
+    cursor: pointer;
+    border: none;
+  }
 }
 
-.TransactionAddForm__title {
-  font-family: $poppins;
-  margin-bottom: 40px;
-  margin-top: 0;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 45px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  color: #000;
-
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .TransactionAddForm__title {
     font-size: 30px;
     line-height: 26px;
+  }
+
+  .TransactionAddForm__title {
+    /* font-family: $poppins; */
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #000;
   }
 }
 
@@ -39,8 +44,8 @@
   align-items: center;
 }
 
-//Checkbox
-.checkbox {
+/* Checkbox */
+/* .checkbox {
   &__wrapper {
     margin-bottom: 40px;
     display: flex;
@@ -53,7 +58,7 @@
     line-height: 24px;
     color: #e0e0e0;
   }
-}
+} */
 .Checkbox__button {
   margin: 0 20px;
   margin-left: 15px;
@@ -100,7 +105,7 @@
   width: 300px;
   height: 50px;
   margin-bottom: 20px;
-  // font-family: Circe;
+  /* // font-family: Circe; */
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -131,7 +136,7 @@
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 40px;
-  // font-family: Circe;
+  /* // font-family: Circe; */
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -142,7 +147,7 @@
   color: #4a56e2;
 }
 
-.transaction {
+/* .transaction {
   &__title {
     font-family: $poppins;
     font-size: 24px;
@@ -150,9 +155,9 @@
     font-weight: 400;
     text-align: center;
     margin-bottom: 40px;
-  }
+  } */
 
-  &__button {
+/* &__button {
     display: inline-block;
     width: 300px;
     height: 50px;
@@ -166,15 +171,15 @@
     background-color: #24cca7;
     color: #ffffff;
     margin-bottom: 20px;
-  }
+  } */
 
-  &__button--cancel {
+/* &__button--cancel {
     background-color: inherit;
     border: 1px solid #4a56e2;
     color: #4a56e2;
     margin-bottom: 0;
-  }
-}
+  } */
+/* } */
 
 .input {
   outline: none;
@@ -183,16 +188,16 @@
   cursor: pointer;
   width: 190px;
 
-  &:hover {
+  /* &:hover {
     border-color: #4a56e2;
-  }
+  } */
 
-  &:focus {
+  /* &:focus {
     border-color: #4a56e2;
-  }
+  } */
 }
 
-.form {
+/* .form {
   &__checkbox {
     margin-bottom: 40px;
   }
@@ -220,7 +225,7 @@
     margin-bottom: 50px;
     margin-top: 30px;
   }
-}
+} */
 
 .text__input {
   @media screen and (max-width: 767px) {
@@ -234,9 +239,9 @@
   padding-left: 20px;
   padding-bottom: 5px;
 
-  &::placeholder {
+  /* &::placeholder {
     color: #bdbdbd;
-  }
+  } */
 }
 
 .sum__input {
@@ -250,13 +255,13 @@
   font-weight: 400;
   padding-left: 20px;
 
-  &::placeholder {
+  /* &::placeholder {
     color: #bdbdbd;
     padding-bottom: 10px;
-  }
+  } */
 }
 
-.date {
+/* .date {
   &__input {
     width: 280px;
     height: 34px;
@@ -283,10 +288,10 @@
     top: 7px;
     pointer-events: none;
   }
-}
+} */
 
-//Select
-.select {
+/* Select */
+/* .select {
   &__wrapper {
     @media screen and (max-width: 767px) {
       margin-bottom: 40px;
@@ -304,13 +309,13 @@
     cursor: pointer;
     pointer-events: none;
   }
-}
+} */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .transaction {
     &__title {
       font-size: 30px;
       line-height: 45px;
     }
   }
-}
+} */

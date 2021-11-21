@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { fontColorsStatistic } from '../../styles/colors';
 
 export const Table = styled.table`
-display: inline-block;
-width: 280px;
-margin: auto;
-@media (min-width: 768px) {
-  width: 688px;
-}
-@media (min-width: 1280px) {
-  width: 700px;
-  margin-top: 45px;
-  margin-left: 30px;
-} ;
+  display: inline-block;
+  width: 280px;
+  margin: auto;
+  @media (min-width: 768px) {
+    width: 688px;
+  }
+  @media (min-width: 1280px) {
+    width: 700px;
+    margin-top: 45px;
+    margin-left: 30px;
+  } ;
 `;
 export const Thead = styled.thead`
   display: block;
@@ -40,7 +40,8 @@ export const Col = styled.td`
   font-size: 16px;
   line-height: 24px;
   color: ${({ type }) =>
-    type === 'increment' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
+    type === '+' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
+
   padding: 10px;
   text-align: end;
   @media (min-width: 768px) {
@@ -65,9 +66,8 @@ export const Td = styled.td`
 `;
 
 export const Tbody = styled.tbody`
-
   background-color: white;
- 
+
   display: inline-block;
   width: 100%;
   margin-bottom: 10px;
@@ -75,7 +75,9 @@ export const Tbody = styled.tbody`
   border-radius: 8px;
   border-left: 4px solid;
   border-color: ${({ type }) =>
-    type === 'increment' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
+    type === 'increment'
+      ? fontColorsStatistic.income
+      : fontColorsStatistic.expenses};
   @media (min-width: 768px) {
     background-color: transparent;
     margin: 0;
@@ -119,4 +121,3 @@ export const Text = styled.h2`
     padding-left: 50px;
   } ;
 `;
-

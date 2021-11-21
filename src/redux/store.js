@@ -14,6 +14,7 @@ import {
 import { statisticsReducer } from './reducers/statistic/statisticReducer';
 import authReducer from './auth/authSlice';
 import { balanceReducer } from './balance/balanceReducer';
+import transactionsReducer from './transactions/transactions-reducer';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ let reducers = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   statistics: statisticsReducer,
   balance: balanceReducer,
+  transactions: transactionsReducer,
 });
 
 // @ts-ignore
