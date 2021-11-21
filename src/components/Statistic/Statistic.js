@@ -7,7 +7,7 @@ import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 import {
   transactionsOperations,
-  transactionsSelectors,
+  // transactionsSelectors,
 } from 'redux/transactions';
 
 const Statistic = () => {
@@ -63,10 +63,11 @@ const Statistic = () => {
 
   //   const newItem = { date, comment, type, amount, balance, category };
 
-  console.log(lastFiveObj);
+  // console.log(lastFiveObj);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllTransactions());
+    dispatch(transactionsOperations.getCategories());
   }, [dispatch]);
 
   let array = [];
