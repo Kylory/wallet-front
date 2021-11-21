@@ -5,21 +5,25 @@ import { ColorBox, TableRowBody, TBody, TDRight } from '../styles';
 
 export const TableBody = () => {
   const content = useSelector(state => getStatistics(state))
-
-
   return (
     <TBody>
-    {content.map((item, index) => {
+    {content ? content.map((item) => {
       return (
-        <TableRowBody key={index}>
+        <TableRowBody key={item.id}>
           <TDRight>
             <ColorBox color={item.color}/>
-            {item.tittle}
+            {item.title}
           </TDRight>
           <td>{item.value}</td>
         </TableRowBody>
       )
-    })}
+    }): <TableRowBody>
+      <TDRight>
+        <ColorBox color='black'/>
+        Расходов не найдено
+      </TDRight>
+      <td>0</td>
+    </TableRowBody>}
     </TBody>
   )
 

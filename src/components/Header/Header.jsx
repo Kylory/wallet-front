@@ -4,8 +4,32 @@ import { ReactComponent as LogoIcon } from '../../icons/logo.svg';
 import { ReactComponent as ExitIcon } from '../../icons/exit.svg';
 import { ExitWrapper, HeaderWrapper, LogoHeader } from './style';
 import { useLocation } from 'react-router-dom';
+import { fontColorsStatistic } from '../../styles/colors'
+import Swal from 'sweetalert2'
 
 export const Header = () => {
+
+  const logOut = function() {
+    Swal.fire({
+      title: 'Вы действительно хотите выйти ?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: fontColorsStatistic.income,
+      cancelButtonColor: fontColorsStatistic.expenses,
+      confirmButtonText: 'Да',
+      cancelButtonText: 'Нет'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Прощайте)))',
+          'Мы будем скучать по вам',
+          'success'
+        )
+      }
+    })
+  }
+
+
   const { pathname } = useLocation();
   const show =
     pathname === '/' || pathname === '/statistics' || pathname === '/exchange';
@@ -15,7 +39,7 @@ export const Header = () => {
         <LogoIcon />
         <LogoText>Wallet</LogoText>
       </LogoHeader>
-      <ExitWrapper>
+      <ExitWrapper onClick={logOut}>
         <p>Имя</p>
         <ExitIcon />
       </ExitWrapper>
