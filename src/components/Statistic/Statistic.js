@@ -12,58 +12,108 @@ import {
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
-  const transactionCategories = useSelector(
-    transactionsSelectors.getTransactionCategories,
-  );
-  console.log('transactionCategories', transactionCategories);
+
+  // const transactionCategories = useSelector(
+  //   transactionsSelectors.getTransactionCategories,
+  // );
+  // console.log('transactionCategories', transactionCategories);
 
   const useContent = () => {
     if (!content) {
       const message = [];
       return message;
-    }
-    // else if(content.length > 5){
-    //   const ap = content.slice(-1 - 4);
-    //   return ap;
-    // }
-    else {
+    } else {
       return content;
     }
   };
 
   const lastFiveObj = useContent();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getAllTransactions());
+  //   dispatch(transactionsOperations.getCategories());
+  // }, [dispatch]);
+
+  // let array = [];
+  // lastFiveObj.map(item => {
+  //   const comment = item.comment;
+  //   // const type = item.type;
+  //   let type = item.type === 'increment' ? '+' : '-';
+  //   const amount = item.amount;
+  //   const balance = item.balance;
+  //   const category = item.category;
+  //   // console.log('category1', category1);
+  //   // const category = transactionCategories.map(
+  //   //   i =>
+  //   //     // console.log(Object.values(i)[0]),
+  //   //     // Object.values(i)[0],
+  //   //     i.category1,
+  //   // );
+  //   // Object.keys(e);
+
+  //   let dateItem = [];
+
+  //   const year = new Date(item.date).getFullYear();
+  //   const month = new Date(item.date).getMonth() + 1;
+  //   const day = new Date(item.date).getDate();
+
+  //   dateItem.push(day, month, year);
+  //   const date = dateItem.join('.');
+
+  //   const newItem = { date, comment, type, amount, balance, category };
+
+  console.log(lastFiveObj);
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllTransactions());
-    dispatch(transactionsOperations.getCategories());
   }, [dispatch]);
 
   let array = [];
+
   lastFiveObj.map(item => {
+    const listType = item.type;
+    const type = listType === 'increment' ? '+' : '-';
+
     const comment = item.comment;
-    // const type = item.type;
-    let type = item.type === 'increment' ? '+' : '-';
     const amount = item.amount;
     const balance = item.balance;
-    const category = item.category;
-    // console.log('category1', category1);
-    // const category = transactionCategories.map(
-    //   i =>
-    //     // console.log(Object.values(i)[0]),
-    //     // Object.values(i)[0],
-    //     i.category1,
-    // );
-    // Object.keys(e);
 
-    let dateItem = [];
+    const listCategory = () => {
+      if (item.category === 'main') {
+        return (item.category = 'Основные расходы');
+      } else if (item.category === 'car') {
+        return (item.category = 'Машина');
+      } else if (item.category === 'food') {
+        return (item.category = 'Продукты');
+      } else if (item.category === 'evolution') {
+        return (item.category = 'Забота о себе');
+      } else if (item.category === 'children') {
+        return (item.category = 'Забота о детях');
+      } else if (item.category === 'home') {
+        return (item.category = 'Товары для дома');
+      } else if (item.category === 'education') {
+        return (item.category = 'Образование');
+      } else if (item.category === 'other') {
+        return (item.category = 'Другое');
+      }
+      return item.category;
+    };
 
-    const year = new Date(item.date).getFullYear();
-    const month = new Date(item.date).getMonth() + 1;
-    const day = new Date(item.date).getDate();
+    const category = listCategory();
 
-    dateItem.push(day, month, year);
-    const date = dateItem.join('.');
+    const dateItem = item.date;
+
+    const DateAll = () => {
+      let correctDate = new Date(dateItem).toLocaleDateString();
+
+      if (correctDate.length < 10) {
+        correctDate = '0' + correctDate;
+      }
+      return correctDate;
+    };
+
+    const date = DateAll();
 
     const newItem = { date, comment, type, amount, balance, category };
     array.push(newItem);
