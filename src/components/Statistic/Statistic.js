@@ -1,15 +1,28 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStatisticsHome } from '../../redux/reducers/statistic/selectors';
-import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col } from './styled';
+import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col, Text } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
-  const lastFiveObj = content.slice(-1 - 4);
+  const useContent = () => {
+    if(!content){
+      const message = [];
+      return message
+    }
+    else if(content.length > 5){
+      const ap = content.slice(-1 - 4);
+      return ap;
+    }
+    else{
+     return content;
+    }
+  }
   
+  const lastFiveObj = useContent();
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllTransactions())
@@ -31,8 +44,8 @@ const day = new Date(item.date).getDate()
     
     
     dateItem.push(day, month, year)
-    
     const date = dateItem.join('.')
+
     const newItem = {date, comment , type, amount, balance, category}
     array.push(newItem)
   });
@@ -43,7 +56,8 @@ const day = new Date(item.date).getDate()
       <Media query={{ maxWidth: 767 }}>
         <>
           <Balance />
-          <Table>
+         { content ?
+          (<Table>
             {array.map(
               ({ date, type, category, comment = '-', amount, balance }, index) => (
                 <Tbody type={type} key={index}>
@@ -74,11 +88,12 @@ const day = new Date(item.date).getDate()
                 </Tbody>
               ),
             )}
-          </Table>
+          </Table>) : (<Text>Пока нет данных по операциям!</Text>)}
         </>
       </Media>
       <Media query={{ minWidth: 768 }}>
-        <Table>
+      { content ?
+        (<Table>
           <Thead>
             <TrHead>
               <Th>Дата</Th>
@@ -103,7 +118,7 @@ const day = new Date(item.date).getDate()
               ),
             )}
           </Tbody>
-        </Table>
+        </Table>) : (<Text>Пока нет данных по операциям!</Text>)}
       </Media>
     </>
   );
