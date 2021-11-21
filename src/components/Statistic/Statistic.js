@@ -1,22 +1,65 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { getStatisticsHome } from '../../redux/reducers/statistic/homeTable/selector.js';
-import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col } from './styled';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getStatisticsHome } from '../../redux/reducers/statistic/selectors';
+import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col, Text } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
+import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 
 const Statistic = () => {
-  const content = useSelector(state => getStatisticsHome(state));
-  const lastFiveObj = content.slice(-1 - 4);
+  const content = useSelector(getStatisticsHome);
+  const useContent = () => {
+    if(!content){
+      const message = [];
+      return message
+    }
+    else if(content.length > 5){
+      const ap = content.slice(-1 - 4);
+      return ap;
+    }
+    else{
+     return content;
+    }
+  }
+  
+  const lastFiveObj = useContent();
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllTransactions())
+  },[dispatch])
+let array =[]
+  lastFiveObj.map(item => {
+    
+  const comment = item.comment;
+  const type = item.type;
+  const amount = item.amount;
+  const balance = item.balance;
+  const category = item.category;
+    
+  let dateItem = [];
+
+const year = new Date(item.date).getFullYear()
+const month = new Date(item.date).getMonth()+1
+const day = new Date(item.date).getDate()
+    
+    
+    dateItem.push(day, month, year)
+    const date = dateItem.join('.')
+
+    const newItem = {date, comment , type, amount, balance, category}
+    array.push(newItem)
+  });
+ 
 
   return (
     <>
       <Media query={{ maxWidth: 767 }}>
         <>
           <Balance />
-          <Table>
-            {lastFiveObj.map(
-              ({ date, type, category, comment, amount, balance }, index) => (
+         { content ?
+          (<Table>
+            {array.map(
+              ({ date, type, category, comment = '-', amount, balance }, index) => (
                 <Tbody type={type} key={index}>
                   <Tr>
                     <Th>Дата</Th>
@@ -45,11 +88,12 @@ const Statistic = () => {
                 </Tbody>
               ),
             )}
-          </Table>
+          </Table>) : (<Text>Пока нет данных по операциям!</Text>)}
         </>
       </Media>
       <Media query={{ minWidth: 768 }}>
-        <Table>
+      { content ?
+        (<Table>
           <Thead>
             <TrHead>
               <Th>Дата</Th>
@@ -61,8 +105,8 @@ const Statistic = () => {
             </TrHead>
           </Thead>
           <Tbody>
-            {lastFiveObj.map(
-              ({ date, type, category, comment, amount, balance }, index) => (
+            {array.map(
+              ({ date, type, category, comment ='-', amount, balance }, index) => (
                 <Tr key={index}>
                   <Td>{date}</Td>
                   <Td>{type}</Td>
@@ -74,7 +118,7 @@ const Statistic = () => {
               ),
             )}
           </Tbody>
-        </Table>
+        </Table>) : (<Text>Пока нет данных по операциям!</Text>)}
       </Media>
     </>
   );

@@ -12,6 +12,7 @@ export const getIncomes = state => {
     return{title, value}
   })
 }
+export const getStatisticsHome = state => state.statistics.homeState
 
 
 
