@@ -13,41 +13,55 @@ const Statistic = () => {
       const message = [];
       return message
     }
-    else if(content.length > 5){
-      const ap = content.slice(-1 - 4);
-      return ap;
-    }
     else{
      return content;
     }
   }
   
   const lastFiveObj = useContent();
+  console.log(lastFiveObj)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllTransactions())
   },[dispatch])
+
 let array =[]
+
   lastFiveObj.map(item => {
     
+    const listType = item.type;
+    const type = listType === 'increment' ? ('+'):('-');
+
   const comment = item.comment;
-  const type = item.type;
   const amount = item.amount;
   const balance = item.balance;
   const category = item.category;
-    
-  let dateItem = [];
+  // const listCategory = () =>{
+  //   if(exp === 'main'){
+  //     return exp === 'rgd';
+  //   }
+  //   else if(exp ==='car') {
+  //     return exp === 'sdfsdfsdffds';
+  //   }
+  // }
+  // const category = listCategory;
+  const dateItem = item.date;
 
-const year = new Date(item.date).getFullYear()
-const month = new Date(item.date).getMonth()+1
-const day = new Date(item.date).getDate()
-    
-    
-    dateItem.push(day, month, year)
-    const date = dateItem.join('.')
+  const DateAll = () => {
+    let correctDate = new Date(dateItem).toLocaleDateString();
 
-    const newItem = {date, comment , type, amount, balance, category}
-    array.push(newItem)
+    if (correctDate.length < 10) {
+      correctDate = '0' + correctDate;
+    }
+    return correctDate;
+  };
+  
+
+ 
+const date = DateAll();
+
+    const newItem = {date, comment , type , amount, balance, category}
+    array.push(newItem);
   });
  
 
