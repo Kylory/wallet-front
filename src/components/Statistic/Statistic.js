@@ -7,15 +7,13 @@ import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 
 const Statistic = () => {
+
   const content = useSelector(getStatisticsHome);
+ 
   const useContent = () => {
     if(!content){
       const message = [];
       return message
-    }
-    else if(content.length > 5){
-      const ap = content.slice(-1 - 4);
-      return ap;
     }
     else{
      return content;
@@ -23,31 +21,70 @@ const Statistic = () => {
   }
   
   const lastFiveObj = useContent();
+  console.log(lastFiveObj)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllTransactions())
   },[dispatch])
+
 let array =[]
+
   lastFiveObj.map(item => {
     
+    const listType = item.type;
+    const type = listType === 'increment' ? ('+'):('-');
+
   const comment = item.comment;
-  const type = item.type;
   const amount = item.amount;
   const balance = item.balance;
-  const category = item.category;
-    
-  let dateItem = [];
 
-const year = new Date(item.date).getFullYear()
-const month = new Date(item.date).getMonth()+1
-const day = new Date(item.date).getDate()
-    
-    
-    dateItem.push(day, month, year)
-    const date = dateItem.join('.')
+  const listCategory = () =>{
+    if(item.category === 'main'){
+      return item.category = 'Основные расходы';
+    }
+    else if(item.category ==='car') {
+      return item.category = 'Машина';
+    }
+    else if(item.category ==='food') {
+      return item.category = 'Продукты';
+    }
+    else if(item.category ==='evolution') {
+      return item.category = 'Забота о себе';
+    }
+    else if(item.category ==='children') {
+      return item.category = 'Забота о детях';
+    }
+    else if(item.category ==='home') {
+      return item.category = 'Товары для дома';
+    }
+    else if(item.category ==='education') {
+      return item.category = 'Образование';
+    }
+    else if(item.category ==='other') {
+      return item.category = 'Другое';
+    }
+    return item.category
+  };
 
-    const newItem = {date, comment , type, amount, balance, category}
-    array.push(newItem)
+  const category = listCategory();
+  
+  const dateItem = item.date;
+
+  const DateAll = () => {
+    let correctDate = new Date(dateItem).toLocaleDateString();
+
+    if (correctDate.length < 10) {
+      correctDate = '0' + correctDate;
+    }
+    return correctDate;
+  };
+  
+
+ 
+const date = DateAll();
+
+    const newItem = {date, comment , type , amount, balance, category};
+    array.push(newItem);
   });
  
 

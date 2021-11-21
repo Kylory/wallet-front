@@ -40,7 +40,7 @@ export const Col = styled.td`
   font-size: 16px;
   line-height: 24px;
   color: ${({ type }) =>
-    type === 'increment' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
+    type === '+' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
   padding: 10px;
   text-align: end;
   @media (min-width: 768px) {
@@ -75,7 +75,7 @@ export const Tbody = styled.tbody`
   border-radius: 8px;
   border-left: 4px solid;
   border-color: ${({ type }) =>
-    type === 'increment' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
+    type === '+' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
   @media (min-width: 768px) {
     background-color: transparent;
     margin: 0;
