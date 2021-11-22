@@ -29,7 +29,7 @@ export const statisticsReducer = (state = initialState, action) => {
       let income = 0
       let expenses = 0
       if (!action.payload.length){
-        return {...state}
+        return  {...state, homeState: action.payload, statisticsIncomes: [{income}, {expenses}]}
       }
       action.payload.forEach(({type, amount}) => {
         if (type === "increment") {
@@ -38,10 +38,7 @@ export const statisticsReducer = (state = initialState, action) => {
           expenses +=amount
         }
       })
-
-
       return {...state, homeState: action.payload, statisticsIncomes: [{income}, {expenses}]}
-
     }
     case SET_CATEGORIES: {
       if (!action.payload.length) {
@@ -123,7 +120,11 @@ export const getTransactionsByPeriod = (data) => {
       try {
         const response = await transactionAPI.getTransactionByPeriod(token,data)
         if (response.status = 200) {
-          dispatch(homeState(response.ResponseBody.filteredTransactions))
+          if (!response.ResponseBody.filteredTransactions.length){
+            dispatch(homeState([]))
+          }else{
+            dispatch(homeState(response.ResponseBody.filteredTransactions))
+          }
         }
       }catch (e) {
         dispatch(errors(e.response))
