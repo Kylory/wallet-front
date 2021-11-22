@@ -97,6 +97,10 @@ const Statistic = () => {
         return (item.category = 'Образование');
       } else if (item.category === 'other') {
         return (item.category = 'Другое');
+      } else if (item.category === 'regularIncome') {
+        return (item.category = 'Регулярный доход');
+      } else if (item.category === 'irregularIncome') {
+        return (item.category = 'Нерегулярный доход');
       }
       return item.category;
     };
