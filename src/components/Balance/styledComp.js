@@ -30,6 +30,7 @@ const Text = styled.p`
 
 const Summ = styled.p`
   font-family: Poppins;
+  font-weight: bold;
   font-size: 30px;
   line-height: 1.5;
   margin: 0;
