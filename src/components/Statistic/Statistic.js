@@ -9,6 +9,7 @@ import {
   transactionsOperations,
   // transactionsSelectors,
 } from 'redux/transactions';
+import moneyService from 'services/moneyService/moneyService';
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
@@ -79,8 +80,8 @@ const Statistic = () => {
     const type = listType === 'increment' ? '+' : '-';
 
     const comment = item.comment;
-    const amount = item.amount;
-    const balance = item.balance;
+    const amount = moneyService(item.amount);
+    const balance = moneyService(item.balance);
 
     const listCategory = () => {
       if (item.category === 'main') {
@@ -99,6 +100,10 @@ const Statistic = () => {
         return (item.category = 'Образование');
       } else if (item.category === 'other') {
         return (item.category = 'Другое');
+      } else if (item.category === 'regularIncome') {
+        return (item.category = 'Регулярный доход');
+      } else if (item.category === 'irregularIncome') {
+        return (item.category = 'Нерегулярный доход');
       }
       return item.category;
     };
@@ -119,11 +124,9 @@ const Statistic = () => {
     const date = DateAll();
 
     const newItem = { date, comment, type, amount, balance, category };
-    array.push(newItem);
+    return array.push(newItem);
   });
-const homsta = useSelector(state => {
 
-})
   return (
     <>
       <Media query={{ maxWidth: 767 }}>

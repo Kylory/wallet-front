@@ -26,21 +26,19 @@ export default function TransactionAddForm() {
     transactionsSelectors.getTransactionCategories,
   );
 
+  const transactionCategoriesIncome = [
+    { regularIncome: 'Регулярный доход' },
+    { irregularIncome: 'Нерегулярный доход' },
+  ];
+
   // useEffect(() => {
   //   dispatch(transactionsOperations.getCategories());
   // }, [dispatch]);
 
   const onClose = () => dispatch(closeModalTransaction());
 
-  const optionSelect = transactionCategories.map(e => {
-    return {
-      value: Object.keys(e)[0],
-      label: Object.values(e)[0],
-    };
-  });
-
   const [fullState, setFullState] = useState({
-    checked: true,
+    checked: false,
     type: '',
     amount: '',
     comment: '',
@@ -48,9 +46,25 @@ export default function TransactionAddForm() {
     date: Date.now(),
   });
 
-  console.log('fullState:', fullState);
+  // console.log(fullState.checked);
+  // console.log('fullState:', fullState);
 
   const { checked, amount, comment, category, date } = fullState;
+
+  let optionSelect;
+  !fullState.checked
+    ? (optionSelect = transactionCategoriesIncome.map(e => {
+        return {
+          value: Object.keys(e)[0],
+          label: Object.values(e)[0],
+        };
+      }))
+    : (optionSelect = transactionCategories.map(e => {
+        return {
+          value: Object.keys(e)[0],
+          label: Object.values(e)[0],
+        };
+      }));
 
   useEffect(() => {
     if (checked) {
