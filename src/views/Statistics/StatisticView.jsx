@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMonth } from '../../redux/reducers/statistic/selectors';
 
 import Select from 'react-select';
-import { customStyles, SelectWrapper, StatisticsWrapper } from './styles';
+import { customStyles, SelectWrapper, StatisticsWithDoughnatWrapper, StatisticsWrapper } from './styles';
 import { TableStatistics } from '../../components/TableStatistics/TableStatistics';
 import { useMedia } from '../../hooks/useMedia';
+import { DoughnutChart } from '../../components/DiagramStatistics/DiagramStatistics';
+
 import { mediaQuery } from '../../styles/breakpoint';
 import {
   getTransactionCategories,
@@ -59,7 +61,10 @@ export const StatisticView = () => {
     );
   }, [monthSelect, yearSelect, dispatch]);
   return (
+    <StatisticsWithDoughnatWrapper>
+    <DoughnutChart/>
     <StatisticsWrapper>
+
       <SelectWrapper>
         <Select
           width={desktopScreen ? '166px' : '280px'}
@@ -79,5 +84,6 @@ export const StatisticView = () => {
       </SelectWrapper>
       <TableStatistics />
     </StatisticsWrapper>
+    </StatisticsWithDoughnatWrapper>
   );
 };
