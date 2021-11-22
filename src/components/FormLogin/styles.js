@@ -8,6 +8,7 @@ export const Logo = styled.div`
   ${breakpoint.m`
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 50px;
 
     width: 180px;
@@ -16,6 +17,7 @@ export const Logo = styled.div`
 `;
 
 export const LogoText = styled.p`
+  margin: 0;
   margin-left: 20px;
 
   font-family: Poppins;
@@ -38,12 +40,12 @@ export const LastIconContainer = styled(IconContainer)`
 
 export const Icon = styled.div`
   position: absolute;
-  top: 0;
+  top: 7px;
   left: 15px;
 
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 
   width: 24px;
   height: 24px;
@@ -55,22 +57,19 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: #fff;
 
   ${breakpoint.m`
     padding: 45px 65px 60px;
     width: 540px;
-    border: 1px solid #e0e0e0;
     border-radius: 20px;
-  `}
-
-  ${breakpoint.l`
     margin-bottom: 50px;
   `}
 `;
 
 export const Input = styled.input`
   position: relative;
-  padding: 0 55px 10px;
+  padding: 10px 55px;
   border: none;
   border-bottom: 1px solid #e0e0e0;
   width: 280px;

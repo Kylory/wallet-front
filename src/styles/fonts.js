@@ -65,7 +65,7 @@ export default createGlobalStyle`
         font-family: 'Poppins';
         src: local('Poppins Bold'), local('PoppinsBold'),
         url(${Poppins_Bold_Woff}) format('woff'),
-        url(${Circe_Bold_Woff2}) format('woff2');
+        url(${Poppins_Bold_Woff2}) format('woff2');
         font-weight: bold;
         font-style: normal;
     };

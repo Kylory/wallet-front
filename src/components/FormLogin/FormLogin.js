@@ -18,7 +18,7 @@ import {
   ButtonSubmit,
   ButtonLink,
   LastIconContainer,
-  Underline,
+  // Underline,
 } from './styles';
 
 const FormLogin = () => {
@@ -76,7 +76,7 @@ const FormLogin = () => {
           onChange={hadleChange}
           placeholder="E-mail"
         />
-        <Underline />
+        {/* <Underline /> */}
         <Icon>
           <EmailIcon />
         </Icon>

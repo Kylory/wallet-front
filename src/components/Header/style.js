@@ -29,8 +29,17 @@ export const HeaderWrapper = styled.header`
 export const ExitWrapper = styled.div`
   display: flex;
   font-size: 18px;
+  cursor: pointer;
   color: ${viewColors.gray4};
   p {
     margin-right: 10px;
+    margin-left: 10px;
   }
+`;
+
+export const ExitText = styled.p`
+  display: none;
+  ${breakpoint.m`
+      display: block;
+  `};
 `;

@@ -1,4 +1,34 @@
 import styled from 'styled-components';
+const BackImgUrlDesktop = require('icons/backgroundLoginDesktop.jpg').default;
+const BackImgUrlTablet = require('icons/backgroundLoginTablet.jpg').default;
+
+export const Background = styled.div`
+  /* position: fixed; */
+  /* top: 0;
+  left: 0; */
+
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    background-image: url(${BackImgUrlTablet});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-position-y: 50%;
+  }
+
+  @media (min-width: 1280px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-image: url(${BackImgUrlDesktop});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+  }
+`;
 
 export const Container = styled.section`
   position: fixed;
@@ -14,10 +44,12 @@ export const Container = styled.section`
   height: 100%;
 
   @media (min-width: 768px) {
+    position: relative;
     height: auto;
   }
 
   @media (min-width: 1280px) {
+    position: fixed;
     flex-direction: row;
     height: 100%;
   }

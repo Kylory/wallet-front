@@ -34,7 +34,8 @@
     "styled-components": "^5.3.3",
     "toastr": "^2.1.4",
     "web-vitals": "^1.0.1",
-    "yop": "^0.0.0"
+    "yop": "^0.0.0",
+    "sweetalert2": "^11.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

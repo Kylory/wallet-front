@@ -20,8 +20,13 @@ import ExchangeRate from 'components/ExchangeRate';
 import { Header } from 'components/Header/Header';
 import { getIsFetchingCurrentUser } from 'redux/auth/authSelectors';
 
+import ButtonAddTransaction from 'components/Transactions/ButtonAddTransaction';
+import { getIsModalAddTransactionOpen } from 'redux/transactions/transactions-selectors';
+import TransactionAddForm from 'components/Transactions/TransactionAddForm';
+
 export const Layout = () => {
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
+  const isModalAddTransactionOpen = useSelector(getIsModalAddTransactionOpen);
 
   return (
     <>
@@ -69,6 +74,8 @@ export const Layout = () => {
                 </SideBar>
               </Media>
               <Outlet />
+              <ButtonAddTransaction />
+              {isModalAddTransactionOpen && <TransactionAddForm />}
             </ContentWrapper>
           </PageWrapper>
         </MainWrapperStyles>
