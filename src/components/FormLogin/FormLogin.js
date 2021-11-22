@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
+import { invalidRequest } from 'services/pnotify/notifications';
 
 import { ReactComponent as LogoIcon } from 'icons/logo.svg';
 import { ReactComponent as EmailIcon } from 'icons/email.svg';
@@ -20,6 +22,11 @@ import {
   LastIconContainer,
   // Underline,
 } from './styles';
+
+let schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(12).required(),
+});
 
 const FormLogin = () => {
   const [email, setEmail] = useState('');
@@ -44,9 +51,23 @@ const FormLogin = () => {
   const hadleSubmit = e => {
     e.preventDefault();
 
-    dispatch(logIn({ email, password }));
+    schema
+      .validate({
+        email,
+        password,
+      })
+      .then(valid => {
+        if (valid) {
+          dispatch(logIn({ email, password }));
 
-    reset();
+          reset();
+        }
+      })
+      .catch(_ =>
+        invalidRequest(
+          'Введены неверные данные! Проверьте правильно ли вы ввели мейл и пароль',
+        ),
+      );
   };
 
   const reset = () => {

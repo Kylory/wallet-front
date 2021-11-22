@@ -14,9 +14,6 @@ import {
   getTransactionCategoriesError,
 } from './transactions-actions';
 
-// import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 //GET
 const fetchTransactions = () => async dispatch => {
   dispatch(fetchTransactionRequest());
