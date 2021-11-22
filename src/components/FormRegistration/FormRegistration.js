@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logIn, registration } from 'redux/auth/authOperations';
+import * as yup from 'yup';
+import { registration } from 'redux/auth/authOperations';
+import { invalidRequest } from 'services/pnotify/notifications';
 
 import { ReactComponent as LogoIcon } from 'icons/logo.svg';
 import { ReactComponent as EmailIcon } from 'icons/email.svg';
@@ -18,6 +20,13 @@ import {
   LogoText,
   LastIconContainer,
 } from './styles';
+
+let schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(12).required(),
+  repeated_password: yup.string().min(6).max(12).required(),
+  name: yup.string().required(),
+});
 
 const FormRegistration = () => {
   const [email, setEmail] = useState('');
@@ -50,17 +59,36 @@ const FormRegistration = () => {
   const hadleSubmit = e => {
     e.preventDefault();
 
-    dispatch(
-      registration({
+    if (password !== confirmPassword) {
+      return invalidRequest('Пароли не совпадают!');
+    }
+
+    schema
+      .validate({
         email,
         password,
         repeated_password: confirmPassword,
         name,
-      }),
-    );
-    dispatch(logIn({ email, password }));
+      })
+      .then(valid => {
+        if (valid) {
+          dispatch(
+            registration({
+              email,
+              password,
+              repeated_password: confirmPassword,
+              name,
+            }),
+          );
 
-    reset();
+          reset();
+        }
+      })
+      .catch(_ =>
+        invalidRequest(
+          'Введены неверные данные! Проверьте правильно ли вы ввели мейл и пароль',
+        ),
+      );
   };
 
   const reset = () => {
@@ -83,6 +111,7 @@ const FormRegistration = () => {
           value={email}
           onChange={hadleChange}
           placeholder="E-mail"
+          title="Email должен иметь примерный вид example@mail.com"
         />
         <Icon>
           <EmailIcon />
@@ -96,7 +125,7 @@ const FormRegistration = () => {
           value={password}
           onChange={hadleChange}
           placeholder="Пароль"
-          title="Пароль должен состоять из 8 символов"
+          title="Пароль должен состоять минимум от 6 символов, максимум 12 включительно"
         />
         <Icon>
           <PasswordIcon />
@@ -124,6 +153,7 @@ const FormRegistration = () => {
           value={name}
           onChange={hadleChange}
           placeholder="Ваше имя"
+          title="Имя долно состоять минимум от 1 символа, максимум 12 включительно"
         />
         <Icon>
           <NameIcon />

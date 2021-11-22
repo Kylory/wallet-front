@@ -6,6 +6,7 @@ import {
   fetchCurrentUser,
   userRejected,
 } from './authOperations';
+import { successRequest, invalidRequest } from 'services/pnotify/notifications';
 
 const initialState = {
   user: { name: null, email: null },
@@ -24,18 +25,24 @@ const authSlice = createSlice({
       state.token = token;
       state.isLoggedIn = true;
       state.isRejected = false;
+      successRequest('Успешно зарегестрировались!');
     },
-    [registration.rejected](state) {
+    [registration.rejected](state, { payload: { message } }) {
       state.isRejected = true;
+      if (message === 'Request failed with status code 409') {
+        invalidRequest('Этот мейл уже используется');
+      }
     },
     [logIn.fulfilled](state, { payload: { user, token } }) {
       state.user = user;
       state.token = token;
       state.isLoggedIn = true;
       state.isRejected = false;
+      successRequest('Успешно залогинились!');
     },
     [logIn.rejected](state) {
       state.isRejected = true;
+      invalidRequest('Введены неверные данные');
     },
     [userRejected](state, _) {
       state.isRejected = false;
