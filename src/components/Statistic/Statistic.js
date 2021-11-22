@@ -73,7 +73,9 @@ const Statistic = () => {
 
   let array = [];
 
-  lastFiveObj.map(item => {
+  const newObject = JSON.stringify(lastFiveObj)
+  const newObjetct2 = JSON.parse(newObject).reverse()
+  newObjetct2.map(item => {
     const listType = item.type;
     const type = listType === 'increment' ? '+' : '-';
 
