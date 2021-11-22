@@ -1,7 +1,19 @@
 import styled from 'styled-components'
-import {breakpoint} from '../../styles/breakpoint'
+import { breakpoint, breakpointMax } from '../../styles/breakpoint';
 import {viewColors, fontColorsStatistic} from '../../styles/colors'
 
+
+export const StatisticsWithDoughnatWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  ${breakpoint.m`
+    flex-direction: row;
+  `}
+  ${breakpointMax.l`
+    margin-left: 30px;
+  `};
+`
 
 export const StatisticsWrapper = styled.div`
   width: 350px;
@@ -15,6 +27,7 @@ export const SelectWrapper = styled.div`
     flex-direction: row;
   `}
 `
+
 export const customStyles = {
   option: (provided, state) => ({
     ...provided,
