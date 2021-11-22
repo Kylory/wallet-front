@@ -1,20 +1,5 @@
 /* @import '../../../stylesheet/vars.scss'; */
 
-/* @media screen and (max-width: 767px) {
-  .TransactionAddForm__closeBtn {
-    display: none;
-  }
-}
-.TransactionAddForm__closeBtn {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  background-color: #fff;
-  display: flex;
-  cursor: pointer;
-  border: none;
-} */
-
 .TransactionAddForm__closeBtn {
   display: none;
 }
@@ -27,8 +12,12 @@
     display: flex;
     cursor: pointer;
     border: none;
-    display: block;
+    /* display: block; */
   }
+  /* .TransactionAddForm__closeBtn:hover {
+    background-color: #24cca7;
+    border-radius: 50%;
+  } */
 }
 
 .TransactionAddForm__title {
@@ -339,12 +328,3 @@
   cursor: pointer;
   pointer-events: none;
 }
-
-/* @media screen and (min-width: 768px) {
-  .transaction {
-    &__title {
-      font-size: 30px;
-      line-height: 45px;
-    }
-  }
-} */

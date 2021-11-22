@@ -35,7 +35,10 @@ export default function TransactionAddForm() {
   //   dispatch(transactionsOperations.getCategories());
   // }, [dispatch]);
 
-  const onClose = () => dispatch(closeModalTransaction());
+  const onClose = () => {
+    dispatch(closeModalTransaction());
+    document.body.style.overflow = 'unset';
+  };
 
   const [fullState, setFullState] = useState({
     checked: false,
@@ -120,26 +123,6 @@ export default function TransactionAddForm() {
     return current.isAfter(yesterday);
   };
 
-  //   const handleSubmit = useCallback(
-  //     e => {
-  //       e.preventDefault();
-
-  //       const validSum = Number(sum).toFixed(2);
-
-  //       dispatch(
-  //         transactionsOperations.addTransaction({
-  //           sum: Number(validSum),
-  //           comment,
-  //           type: !checked ? 'income' : 'expense',
-  //           category,
-  //         }),
-  //       );
-
-  //       onClose();
-  //     },
-  //     [checked, comment, sum, category, onClose, dispatch],
-  //   );
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -212,7 +195,7 @@ export default function TransactionAddForm() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M0 1L20 0.999999" stroke="white" stroke-width="2" />
+                <path d="M0 1L20 0.999999" stroke="white" strokeWidth="2" />
               </svg>
             }
             uncheckedHandleIcon={
@@ -225,8 +208,8 @@ export default function TransactionAddForm() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M10 0V20" stroke="white" stroke-width="2" />
-                <path d="M0 10L20 10" stroke="white" stroke-width="2" />
+                <path d="M10 0V20" stroke="white" strokeWidth="2" />
+                <path d="M0 10L20 10" stroke="white" strokeWidth="2" />
               </svg>
             }
           />
@@ -330,9 +313,9 @@ export default function TransactionAddForm() {
                 width="32"
                 height="32"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
