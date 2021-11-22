@@ -11,11 +11,12 @@
 
 .Modal__content {
   position: absolute;
-  width: 100%;
-  min-height: 540px;
-  top: 60px;
+  height: 100vh;
+  min-height: 569px;
+  top: 70px;
   padding: 20px 10px 40px 10px;
   background-color: #fff;
+  border-top: 1px solid #bdbdbd;
 }
 
 @media screen and (min-width: 768px) {
