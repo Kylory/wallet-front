@@ -33,5 +33,13 @@ export const ExitWrapper = styled.div`
   color: ${viewColors.gray4};
   p {
     margin-right: 10px;
+    margin-left: 10px;
   }
+`;
+
+export const ExitText = styled.p`
+  display: none;
+  ${breakpoint.m`
+      display: block;
+  `};
 `;

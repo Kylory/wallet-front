@@ -9,6 +9,7 @@ import {
   transactionsOperations,
   // transactionsSelectors,
 } from 'redux/transactions';
+import moneyService from 'services/moneyService/moneyService';
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
@@ -77,8 +78,8 @@ const Statistic = () => {
     const type = listType === 'increment' ? '+' : '-';
 
     const comment = item.comment;
-    const amount = item.amount;
-    const balance = item.balance;
+    const amount = moneyService(item.amount);
+    const balance = moneyService(item.balance);
 
     const listCategory = () => {
       if (item.category === 'main') {
@@ -121,7 +122,7 @@ const Statistic = () => {
     const date = DateAll();
 
     const newItem = { date, comment, type, amount, balance, category };
-    array.push(newItem);
+    return array.push(newItem);
   });
 
   return (
