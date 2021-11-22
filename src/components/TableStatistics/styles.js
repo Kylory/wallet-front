@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../styles/breakpoint';
+
 import { viewColors, fontColorsStatistic } from '../../styles/colors';
 
 export const Table = styled.table`
