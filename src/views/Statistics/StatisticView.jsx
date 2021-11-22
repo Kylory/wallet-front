@@ -4,11 +4,8 @@ import { getMonth } from '../../redux/reducers/statistic/selectors';
 
 import Select from 'react-select';
 import { customStyles, SelectWrapper, StatisticsWithDoughnatWrapper, StatisticsWrapper } from './styles';
-import { customStyles, SelectWrapper, StatisticsWrapper } from './styles';
 import { TableStatistics } from '../../components/TableStatistics/TableStatistics';
 import { useMedia } from '../../hooks/useMedia';
-import {mediaQuery} from '../../styles/breakpoint'
-import { getTransactionCategories } from '../../redux/reducers/statistic/statisticReducer';
 import { DoughnutChart } from '../../components/DiagramStatistics/DiagramStatistics';
 
 import { mediaQuery } from '../../styles/breakpoint';
