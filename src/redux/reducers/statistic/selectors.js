@@ -9,9 +9,9 @@ export const getStatistics = state => {
     return null
   }
   const allTransactionsDecrement = state.statistics.homeState.filter(({type}) => type === 'decrement')
+
   const allCategories = state.statistics.statisticCategories
   const sendStatistics = []
-
   allCategories.forEach((item, index) => {
     const filtredStatisticsItem = allTransactionsDecrement.filter(trasItem => {
      return  trasItem.category === item.value

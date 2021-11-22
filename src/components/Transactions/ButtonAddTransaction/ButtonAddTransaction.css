@@ -12,6 +12,16 @@
   right: 20px;
   bottom: 30px;
 }
+.ButtonAddTransaction:hover {
+  background: #11ddb1;
+  transform: scale(1.1);
+}
+
+.ButtonAddTransaction:focus {
+  background: #11ddb1;
+  transform: scale(1.1);
+}
+
 @media screen and (min-width: 768px) {
   .ButtonAddTransaction {
     right: 40px;
@@ -25,4 +35,8 @@
     right: 85px;
     bottom: 40px;
   }
+}
+
+button svg {
+  margin-top: 5px;
 }

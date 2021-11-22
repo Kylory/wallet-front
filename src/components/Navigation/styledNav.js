@@ -31,7 +31,7 @@ const StyledLink = styled(NavLink)`
   align-items: center;
   font-family: Poppins;
   font-style: normal;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.5;
   color: #000000;
   ${breakpointMax.m`
@@ -40,7 +40,7 @@ const StyledLink = styled(NavLink)`
     }
   `};
   ${breakpoint.m`
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   `};
 
   &.active {

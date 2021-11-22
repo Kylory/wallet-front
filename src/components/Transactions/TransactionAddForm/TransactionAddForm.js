@@ -26,21 +26,22 @@ export default function TransactionAddForm() {
     transactionsSelectors.getTransactionCategories,
   );
 
+  const transactionCategoriesIncome = [
+    { regularIncome: 'Регулярный доход' },
+    { irregularIncome: 'Нерегулярный доход' },
+  ];
+
   // useEffect(() => {
   //   dispatch(transactionsOperations.getCategories());
   // }, [dispatch]);
 
-  const onClose = () => dispatch(closeModalTransaction());
-
-  const optionSelect = transactionCategories.map(e => {
-    return {
-      value: Object.keys(e)[0],
-      label: Object.values(e)[0],
-    };
-  });
+  const onClose = () => {
+    dispatch(closeModalTransaction());
+    document.body.style.overflow = 'unset';
+  };
 
   const [fullState, setFullState] = useState({
-    checked: true,
+    checked: false,
     type: '',
     amount: '',
     comment: '',
@@ -48,9 +49,25 @@ export default function TransactionAddForm() {
     date: Date.now(),
   });
 
-  console.log('fullState:', fullState);
+  // console.log(fullState.checked);
+  // console.log('fullState:', fullState);
 
   const { checked, amount, comment, category, date } = fullState;
+
+  let optionSelect;
+  !fullState.checked
+    ? (optionSelect = transactionCategoriesIncome.map(e => {
+        return {
+          value: Object.keys(e)[0],
+          label: Object.values(e)[0],
+        };
+      }))
+    : (optionSelect = transactionCategories.map(e => {
+        return {
+          value: Object.keys(e)[0],
+          label: Object.values(e)[0],
+        };
+      }));
 
   useEffect(() => {
     if (checked) {
@@ -105,26 +122,6 @@ export default function TransactionAddForm() {
   let valid = function (current) {
     return current.isAfter(yesterday);
   };
-
-  //   const handleSubmit = useCallback(
-  //     e => {
-  //       e.preventDefault();
-
-  //       const validSum = Number(sum).toFixed(2);
-
-  //       dispatch(
-  //         transactionsOperations.addTransaction({
-  //           sum: Number(validSum),
-  //           comment,
-  //           type: !checked ? 'income' : 'expense',
-  //           category,
-  //         }),
-  //       );
-
-  //       onClose();
-  //     },
-  //     [checked, comment, sum, category, onClose, dispatch],
-  //   );
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -198,7 +195,7 @@ export default function TransactionAddForm() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M0 1L20 0.999999" stroke="white" stroke-width="2" />
+                <path d="M0 1L20 0.999999" stroke="white" strokeWidth="2" />
               </svg>
             }
             uncheckedHandleIcon={
@@ -211,8 +208,8 @@ export default function TransactionAddForm() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M10 0V20" stroke="white" stroke-width="2" />
-                <path d="M0 10L20 10" stroke="white" stroke-width="2" />
+                <path d="M10 0V20" stroke="white" strokeWidth="2" />
+                <path d="M0 10L20 10" stroke="white" strokeWidth="2" />
               </svg>
             }
           />
@@ -316,9 +313,9 @@ export default function TransactionAddForm() {
                 width="32"
                 height="32"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"

@@ -7,8 +7,9 @@ import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 import {
   transactionsOperations,
-  transactionsSelectors,
+  // transactionsSelectors,
 } from 'redux/transactions';
+import moneyService from 'services/moneyService/moneyService';
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
@@ -63,21 +64,24 @@ const Statistic = () => {
 
   //   const newItem = { date, comment, type, amount, balance, category };
 
-  console.log(lastFiveObj);
+  // console.log(lastFiveObj);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllTransactions());
+    dispatch(transactionsOperations.getCategories());
   }, [dispatch]);
 
   let array = [];
 
-  lastFiveObj.map(item => {
+  const newObject = JSON.stringify(lastFiveObj)
+  const newObjetct2 = JSON.parse(newObject).reverse()
+  newObjetct2.map(item => {
     const listType = item.type;
     const type = listType === 'increment' ? '+' : '-';
 
     const comment = item.comment;
-    const amount = item.amount;
-    const balance = item.balance;
+    const amount = moneyService(item.amount);
+    const balance = moneyService(item.balance);
 
     const listCategory = () => {
       if (item.category === 'main') {
@@ -96,6 +100,10 @@ const Statistic = () => {
         return (item.category = 'Образование');
       } else if (item.category === 'other') {
         return (item.category = 'Другое');
+      } else if (item.category === 'regularIncome') {
+        return (item.category = 'Регулярный доход');
+      } else if (item.category === 'irregularIncome') {
+        return (item.category = 'Нерегулярный доход');
       }
       return item.category;
     };
@@ -116,7 +124,7 @@ const Statistic = () => {
     const date = DateAll();
 
     const newItem = { date, comment, type, amount, balance, category };
-    array.push(newItem);
+    return array.push(newItem);
   });
 
   return (

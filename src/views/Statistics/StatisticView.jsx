@@ -3,17 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMonth } from '../../redux/reducers/statistic/selectors';
 
 import Select from 'react-select';
-import { customStyles, SelectWrapper, StatisticsWrapper } from './styles';
+import { customStyles, SelectWrapper, StatisticsWithDoughnatWrapper, StatisticsWrapper } from './styles';
 import { TableStatistics } from '../../components/TableStatistics/TableStatistics';
 import { useMedia } from '../../hooks/useMedia';
-import { mediaQuery } from '../../styles/breakpoint';
-import { getTransactionCategories, getTransactionsByPeriod } from '../../redux/reducers/statistic/statisticReducer';
+import { DoughnutChart } from '../../components/DiagramStatistics/DiagramStatistics';
 
+import { mediaQuery } from '../../styles/breakpoint';
+import {
+  getTransactionCategories,
+  getTransactionsByPeriod,
+} from '../../redux/reducers/statistic/statisticReducer';
 
 export const StatisticView = () => {
   const month = useSelector(state => getMonth(state));
 
-  const [monthSelect, setMonthSelect] = useState({ value: 'month', label: 'Месяц', numberValue: null });
+  const [monthSelect, setMonthSelect] = useState({
+    value: 'month',
+    label: 'Месяц',
+    numberValue: null,
+  });
   const [yearSelect, setYearSelect] = useState({ label: 'Год', value: null });
 
   const dispatch = useDispatch();
@@ -21,7 +29,7 @@ export const StatisticView = () => {
     dispatch(getTransactionCategories());
   }, [dispatch]);
 
-  const handleMonthChange = (value) => {
+  const handleMonthChange = value => {
     const monthIndexSelect = month.findIndex(i => i.value === value.value);
     setMonthSelect(prevState => {
       return {
@@ -32,10 +40,9 @@ export const StatisticView = () => {
       };
     });
   };
-  const handleChangeYear = (value) => {
+  const handleChangeYear = value => {
     setYearSelect(value);
   };
-
 
   const desktopScreen = useMedia(mediaQuery.m);
   const year = [
@@ -43,15 +50,21 @@ export const StatisticView = () => {
     { value: 2021, label: '2021' },
   ];
   useEffect(() => {
-
-   if (!monthSelect.numberValue || !yearSelect.value){
-     return
-   }
-      dispatch(getTransactionsByPeriod({month:monthSelect.numberValue, year:yearSelect.value}));
-
+    if (!monthSelect.numberValue || !yearSelect.value) {
+      return;
+    }
+    dispatch(
+      getTransactionsByPeriod({
+        month: monthSelect.numberValue + 1,
+        year: yearSelect.value,
+      }),
+    );
   }, [monthSelect, yearSelect, dispatch]);
   return (
+    <StatisticsWithDoughnatWrapper>
+    <DoughnutChart/>
     <StatisticsWrapper>
+
       <SelectWrapper>
         <Select
           width={desktopScreen ? '166px' : '280px'}
@@ -69,11 +82,8 @@ export const StatisticView = () => {
           onChange={handleMonthChange}
         />
       </SelectWrapper>
-      <TableStatistics/>
+      <TableStatistics />
     </StatisticsWrapper>
-
-
+    </StatisticsWithDoughnatWrapper>
   );
-
-
 };
