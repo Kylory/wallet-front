@@ -1,34 +1,38 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { breakpoint } from '../../styles/breakpoint';
-import {viewColors, fontColorsStatistic} from '../../styles/colors'
-
+import { viewColors, fontColorsStatistic } from '../../styles/colors';
 
 export const StatisticsWithDoughnatWrapper = styled.div`
   width: 320px;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  align-items: center;
+
   ${breakpoint.m`
     flex-direction: row;
+    align-items: normal;
   `}
-
-`
+`;
 
 export const StatisticsWrapper = styled.div`
   width: 280px;
   ${breakpoint.m`
     width: 350px;
   `}
-`
+`;
 
 export const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  /* &:not(:last-child) { */
+  margin-right: 10px;
+  /* } */
   ${breakpoint.m`
     flex-direction: row;
   `}
-`
+`;
 
 export const customStyles = {
   option: (provided, state) => ({
@@ -38,7 +42,7 @@ export const customStyles = {
     color: state.isSelected ? fontColorsStatistic.expenses : viewColors.black,
     backgroundColor: 'none',
   }),
-  control: (_, { selectProps: { width, marginBottom }}) => ({
+  control: (_, { selectProps: { width, marginBottom } }) => ({
     display: 'flex',
     width: width,
     marginBottom: marginBottom,
@@ -54,4 +58,4 @@ export const customStyles = {
     const transition = 'opacity 300ms';
     return { ...provided, opacity, transition };
   },
-}
+};

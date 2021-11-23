@@ -2,11 +2,11 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { getStatistics } from '../../redux/reducers/statistic/selectors';
-import { DoughnatStatisticsWrapper, DoughnatWrapper } from './styles';
+import { DoughnatStatisticsWrapper, DoughnatWrapper, H2 } from './styles';
 
 export const DoughnutChart = () => {
   const content = useSelector(state => getStatistics(state));
-    const data = {
+  const data = {
     datasets: [
       {
         data: content,
@@ -31,7 +31,7 @@ export const DoughnutChart = () => {
     <>
       <DoughnatStatisticsWrapper>
         <div>
-          <h2>Статистика</h2>
+          <H2>Статистика</H2>
         </div>
         <DoughnatWrapper>
           <Doughnut data={data} />
