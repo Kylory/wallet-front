@@ -13,14 +13,7 @@ export const Logo = styled.div`
 
     width: 180px;
     height: 40px;
-  `}/* @media (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-
-    width: 180px;
-    height: 40px;
-  } */
+  `}
 `;
 
 export const LogoText = styled.p`
@@ -42,9 +35,7 @@ export const IconContainer = styled.div`
 export const LastIconContainer = styled(IconContainer)`
   ${breakpoint.m`
     margin-bottom: 50px;
-  `}/* @media (min-width: 768px) {
-    margin-bottom: 50px;
-  } */
+  `}
 `;
 
 export const Icon = styled.div`
@@ -89,19 +80,19 @@ export const Input = styled.input`
   border-bottom: 1px solid #e0e0e0;
   width: 280px;
   outline: none;
+  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus {
+    border-bottom: 1px solid #24cca7;
+  }
 
   &::placeholder {
-    // font-size: 18px;
-    // line-height: 27px;
-
     color: #bdbdbd;
   }
 
   ${breakpoint.m`
     width: 410px;
-  `}/* @media (min-width: 768px) {
-    width: 410px;
-  } */
+  `}
 `;
 
 export const ButtonSubmit = styled.button`
@@ -136,9 +127,7 @@ export const ButtonSubmit = styled.button`
 
   ${breakpoint.m`
     width: 300px;
-  `}/* @media (min-width: 768px) {
-    width: 300px;
-  } */
+  `}
 `;
 
 export const ButtonLink = styled.button`
@@ -161,7 +150,5 @@ export const ButtonLink = styled.button`
 
   ${breakpoint.m`
     width: 300px;
-  `}/* @media (min-width: 768px) {
-    width: 300px;
-  } */
+  `}
 `;

@@ -5,19 +5,11 @@ import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col, Text } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
-import {
-  transactionsOperations,
-  // transactionsSelectors,
-} from 'redux/transactions';
+import { transactionsOperations } from 'redux/transactions';
 import moneyService from 'services/moneyService/moneyService';
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
-
-  // const transactionCategories = useSelector(
-  //   transactionsSelectors.getTransactionCategories,
-  // );
-  // console.log('transactionCategories', transactionCategories);
 
   const useContent = () => {
     if (!content) {
@@ -39,7 +31,6 @@ const Statistic = () => {
   let array = [];
 
   const newObject = JSON.stringify(lastFiveObj);
-  // const newObjetct2 = JSON.parse(newObject).reverse();
   const newObjetct2 = JSON.parse(newObject);
 
   newObjetct2.sort(function (a, b) {

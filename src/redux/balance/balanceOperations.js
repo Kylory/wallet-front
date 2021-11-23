@@ -8,7 +8,6 @@ export const fetchBalance = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('/users/current');
-      // console.log(data.ResponseBody.balance);
       return data.ResponseBody.balance;
     } catch (error) {
       return rejectWithValue(error);

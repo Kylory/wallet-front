@@ -1,16 +1,7 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
-import {
-  persistStore,
-  persistReducer,
-  // FLUSH,
-  // REHYDRATE,
-  // PAUSE,
-  // PERSIST,
-  // PURGE,
-  // REGISTER,
-} from 'redux-persist';
+import { persistStore, persistReducer } from 'redux-persist';
 import { statisticsReducer } from './reducers/statistic/statisticReducer';
 import authReducer from './auth/authSlice';
 import { balanceReducer } from './balance/balanceReducer';

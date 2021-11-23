@@ -12,12 +12,11 @@ import {
   transactionsOperations,
   transactionsSelectors,
 } from '../../../redux/transactions';
-// const sass = require('node-sass');
-// import './TransactionAddForm.scss';
 import './TransactionAddForm.css';
 import { closeModalTransaction } from 'redux/transactions/transactions-actions';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 import { fetchBalance } from 'redux/balance/balanceOperations';
+import { successRequest, invalidRequest } from 'services/pnotify/notifications';
 
 export default function TransactionAddForm() {
   const dispatch = useDispatch();
@@ -30,10 +29,6 @@ export default function TransactionAddForm() {
     { regularIncome: 'Регулярный доход' },
     { irregularIncome: 'Нерегулярный доход' },
   ];
-
-  // useEffect(() => {
-  //   dispatch(transactionsOperations.getCategories());
-  // }, [dispatch]);
 
   const onClose = () => {
     dispatch(closeModalTransaction());
@@ -48,9 +43,6 @@ export default function TransactionAddForm() {
     category: '',
     date: Date.now(),
   });
-
-  // console.log(fullState.checked);
-  // console.log('fullState:', fullState);
 
   const { checked, amount, comment, category, date } = fullState;
 
@@ -96,7 +88,6 @@ export default function TransactionAddForm() {
   };
 
   const onChangeSelect = e => {
-    // console.log(e.value);
     setFullState(prev => ({
       ...prev,
       category: e.value,
@@ -129,6 +120,10 @@ export default function TransactionAddForm() {
 
     const validSum = Number(amount).toFixed(2);
 
+    if (amount === '' || category === '') {
+      return invalidRequest('Заполните все поля!');
+    }
+
     (async () => {
       await dispatch(
         transactionsOperations.addTransaction({
@@ -142,6 +137,7 @@ export default function TransactionAddForm() {
 
       dispatch(getAllTransactions());
       dispatch(fetchBalance());
+      successRequest('Транзакция успешно добавлена!');
     })();
 
     onClose();

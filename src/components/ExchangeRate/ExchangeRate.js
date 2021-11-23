@@ -35,10 +35,8 @@ const ExchangeRate = () => {
           const newSale = moneyService(Number(item.sale));
           const newCcy = item.ccy;
           const newItem = { newCcy, newBuy, newSale };
-          // console.log(newItem);
           return newCurrArr.push(newItem);
         });
-        // console.log(newCurrArr);
         setCurrencyArr(newCurrArr);
       })
       .catch(error => setError(error))

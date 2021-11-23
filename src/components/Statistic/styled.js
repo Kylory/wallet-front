@@ -44,7 +44,6 @@ export const Th = styled.th`
   font-weight: bold;
   font-size: 18px;
   line-height: 27px;
-  // width: 116px;
   padding: 10px;
   text-align: start;
   @media (min-width: 768px) {
@@ -54,7 +53,6 @@ export const Th = styled.th`
   }
 `;
 export const Col = styled.td`
-  // width: 116px;
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
@@ -70,7 +68,6 @@ export const Col = styled.td`
 `;
 
 export const Td = styled.td`
-  // width: 116px;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
@@ -93,9 +90,6 @@ export const Tbody = styled.tbody`
   border-radius: 8px;
   border-left: 4px solid;
   border-color: ${({ type }) =>
-    // type === 'increment'
-    //   ? fontColorsStatistic.income
-    //   : fontColorsStatistic.expenses};
     type === '+' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
 
   @media (min-width: 768px) {
@@ -124,9 +118,6 @@ export const Tbody = styled.tbody`
 `;
 
 export const Tr = styled.tr`
-  // display: table;
-  // width: 700px;
-  // height: 54px;
   display: flex;
   width: 275px;
   justify-content: space-between;

@@ -43,7 +43,6 @@ export const Header = () => {
       </LogoHeader>
       <ExitWrapper onClick={logOutHandler}>
         <p>{name}</p>
-        {/* <p>|</p> */}
         <ExitIcon />
         <ExitText>Выйти</ExitText>
       </ExitWrapper>
