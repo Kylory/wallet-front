@@ -12,14 +12,20 @@ export const Table = styled.table`
     width: 700px;
     margin-top: 45px;
     margin-left: 30px;
+    /* max-height: 60vh;
+    overflow: auto; */
   } ;
 `;
 export const Thead = styled.thead`
+  /* position: fixed; */
   display: block;
   width: 100%;
   height: 58px;
   background: #ffffff;
   border-radius: 30px;
+  /* @media (min-width: 1280px) {
+    width: 700px;
+  } ; */
 `;
 export const Th = styled.th`
   font-weight: bold;
