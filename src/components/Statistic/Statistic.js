@@ -21,6 +21,7 @@ const Statistic = () => {
   };
 
   const lastFiveObj = useContent();
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllTransactions());
@@ -30,7 +31,18 @@ const Statistic = () => {
   let array = [];
 
   const newObject = JSON.stringify(lastFiveObj);
-  const newObjetct2 = JSON.parse(newObject).reverse();
+  const newObjetct2 = JSON.parse(newObject);
+
+  newObjetct2.sort(function (a, b) {
+    if (a.date < b.date) {
+      return 1;
+    }
+    if (a.date > b.date) {
+      return -1;
+    }
+    return 0;
+  });
+
   newObjetct2.map(item => {
     const listType = item.type;
     const type = listType === 'increment' ? '+' : '-';
@@ -65,12 +77,9 @@ const Statistic = () => {
     };
 
     const category = listCategory();
-
     const dateItem = item.date;
-
     const DateAll = () => {
       let correctDate = new Date(dateItem).toLocaleDateString();
-
       if (correctDate.length < 10) {
         correctDate = '0' + correctDate;
       }
@@ -78,7 +87,6 @@ const Statistic = () => {
     };
 
     const date = DateAll();
-
     const newItem = { date, comment, type, amount, balance, category };
     return array.push(newItem);
   });

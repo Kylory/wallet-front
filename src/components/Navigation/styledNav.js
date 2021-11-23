@@ -16,13 +16,13 @@ const Wrapper = styled.div`
   `};
   ${breakpoint.m`
     margin-bottom: 20px;
-    padding-top: 30px;
+    // padding-top: 30px;
 
     flex-direction: column;
   `};
   ${breakpoint.l`
     margin-bottom: 30px;
-    padding-top: 40px;
+    // padding-top: 40px;
   `};
 `;
 

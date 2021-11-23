@@ -110,6 +110,7 @@ export default function TransactionAddForm() {
   };
 
   let yesterday = moment().subtract(1, 'day');
+
   let valid = function (current) {
     return current.isAfter(yesterday);
   };
