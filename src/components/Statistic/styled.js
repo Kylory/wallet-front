@@ -113,7 +113,7 @@ export const Tbody = styled.tbody`
     }
   }
   @media (min-width: 1280px) {
-    height: 61vh;
+    height: 600px;
   }
 `;
 
