@@ -1,13 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { openModalTransaction } from 'redux/transactions/transactions-actions';
-// import { getIsModalAddTransactionOpen } from 'redux/transactions/transactions-selectors';
-// import "./ButtonAddTransaction.scss";
 import './ButtonAddTransaction.css';
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
-  // const isModalAddTransactionOpen = useSelector(getIsModalAddTransactionOpen);
 
   const onClick = () => {
     dispatch(openModalTransaction());

@@ -3,10 +3,6 @@ const BackImgUrlDesktop = require('icons/backgroundLoginDesktop.jpg').default;
 const BackImgUrlTablet = require('icons/backgroundLoginTablet.jpg').default;
 
 export const Background = styled.div`
-  /* position: fixed; */
-  /* top: 0;
-  left: 0; */
-
   width: 100%;
   height: 100%;
 
