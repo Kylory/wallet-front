@@ -6,8 +6,7 @@ import { DoughnatStatisticsWrapper, DoughnatWrapper } from './styles';
 
 export const DoughnutChart = () => {
   const content = useSelector(state => getStatistics(state));
-
-  const data = {
+    const data = {
     datasets: [
       {
         data: content,
