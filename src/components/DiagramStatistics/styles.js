@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { breakpoint } from '../../styles/breakpoint';
 
 export const DoughnatStatisticsWrapper = styled.div`
+  ${breakpoint.l`
+    margin: 0 30px 0;
+  `}
+  
 `
 
 
