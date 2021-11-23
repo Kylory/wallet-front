@@ -52,6 +52,7 @@ export const customStyles = {
     color: viewColors.black,
     border: '1px solid #000000',
     borderRadius: 30,
+    marginRight: 10,
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
