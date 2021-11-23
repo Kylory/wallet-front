@@ -3,14 +3,27 @@ import { fontColorsStatistic } from '../../styles/colors';
 
 export const Table = styled.table`
   display: inline-block;
-  width: 280px;
+  width: 294px;
   margin: auto;
+  @media (max-width: 767px) {
+    overflow-x: auto;
+    height: 57vh;
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+  }
   @media (min-width: 768px) {
     width: 688px;
   }
   @media (min-width: 1280px) {
     width: 700px;
-    margin-top: 45px;
+    /* margin-top: 45px; */
     margin-left: 30px;
     /* max-height: 60vh;
     overflow: auto; */
@@ -84,11 +97,29 @@ export const Tbody = styled.tbody`
     //   ? fontColorsStatistic.income
     //   : fontColorsStatistic.expenses};
     type === '+' ? fontColorsStatistic.income : fontColorsStatistic.expenses};
+
   @media (min-width: 768px) {
     background-color: transparent;
     margin: 0;
     border: none;
     text-align: center;
+    height: 35vh;
+    overflow-x: auto;
+    overflow-y: overlay;
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      /* height: 5px; */
+    }
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+  }
+  @media (min-width: 1280px) {
+    height: 61vh;
   }
 `;
 

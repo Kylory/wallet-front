@@ -28,7 +28,10 @@ export const PageWrapper = styled.div`
   ${breakpoint.l`
     position: relative;
     max-width: 1440px;
-    padding: 40px 85px;
+    // padding: 40px 85px;
+    padding: 45px 85px;
+
+        // padding: 0 85px 40px;
   `};
 `;
 export const ContentWrapper = styled.section`
@@ -56,7 +59,7 @@ export const LineWrapper = styled.div`
   ${breakpoint.l`
     position: absolute;
     width: 0px;
-    height: 100vh;
+    height: 100%;
     left: 465px;
     top: 0;
     border: 1px solid #E7E5F2;

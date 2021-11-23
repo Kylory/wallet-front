@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     margin-right: auto;
   `};
   ${breakpointMax.l`
-    margin-top: 20px;
+    // margin-top: 20px;
   `};
 `;
 
