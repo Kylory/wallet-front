@@ -18,6 +18,7 @@ import './TransactionAddForm.css';
 import { closeModalTransaction } from 'redux/transactions/transactions-actions';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
 import { fetchBalance } from 'redux/balance/balanceOperations';
+import { successRequest, invalidRequest } from 'services/pnotify/notifications';
 
 export default function TransactionAddForm() {
   const dispatch = useDispatch();
@@ -128,6 +129,10 @@ export default function TransactionAddForm() {
 
     const validSum = Number(amount).toFixed(2);
 
+    if (amount === '' || category === '') {
+      return invalidRequest('Заполните все поля!');
+    }
+
     (async () => {
       await dispatch(
         transactionsOperations.addTransaction({
@@ -141,6 +146,7 @@ export default function TransactionAddForm() {
 
       dispatch(getAllTransactions());
       dispatch(fetchBalance());
+      successRequest('Транзакция успешно добавлена!');
     })();
 
     onClose();
