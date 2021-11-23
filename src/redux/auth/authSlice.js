@@ -38,7 +38,7 @@ const authSlice = createSlice({
       state.token = token;
       state.isLoggedIn = true;
       state.isRejected = false;
-      successRequest('Успешно залогинились!');
+      successRequest('Успешно вошли!');
     },
     [logIn.rejected](state) {
       state.isRejected = true;

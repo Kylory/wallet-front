@@ -1,5 +1,3 @@
-/* @import '../../../stylesheet/vars.scss'; */
-
 .TransactionAddForm__closeBtn {
   display: none;
 }
@@ -12,7 +10,6 @@
     display: flex;
     cursor: pointer;
     border: none;
-    /* display: block; */
     width: 40px;
     height: 40px;
   }
@@ -28,7 +25,6 @@
 }
 
 .TransactionAddForm__title {
-  /* font-family: Poppins; */
   margin-bottom: 40px;
   margin-top: 0;
   font-style: normal;
@@ -44,7 +40,6 @@
 @media screen and (min-width: 768px) {
   .TransactionAddForm__title {
     font-size: 30px;
-    /* line-height: 26px; */
   }
 }
 
@@ -54,7 +49,6 @@
   align-items: center;
 }
 
-/* Checkbox */
 .checkbox__wrapper {
   margin-bottom: 40px;
   display: flex;
@@ -115,7 +109,6 @@
   width: 300px;
   height: 50px;
   margin-bottom: 20px;
-  /* // font-family: Circe; */
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -146,7 +139,6 @@
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 40px;
-  /* // font-family: Circe; */
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -156,38 +148,6 @@
   text-transform: uppercase;
   color: #4a56e2;
 }
-
-/* .transaction__title {
-  font-family: $poppins;
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: 400;
-  text-align: center;
-  margin-bottom: 40px;
-} */
-
-/* .transaction__button {
-  display: inline-block;
-  width: 300px;
-  height: 50px;
-  border-radius: 20px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 400;
-  border: none;
-  background-color: #24cca7;
-  color: #ffffff;
-  margin-bottom: 20px;
-} */
-/*
-.transaction__button--cancel {
-  background-color: inherit;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
-  margin-bottom: 0;
-} */
 
 .input {
   outline: none;
@@ -231,7 +191,6 @@
 }
 @media screen and (min-width: 768px) {
   .form__sum {
-    /* margin-right: 30px; */
     margin-bottom: 0;
   }
 }
@@ -310,11 +269,9 @@
 @media screen and (min-width: 768px) {
   .date__icon {
     top: 7px;
-    /* right: 20px; */
   }
 }
 
-/* Select  */
 .select__wrapper {
   position: relative;
   margin-bottom: 40px;

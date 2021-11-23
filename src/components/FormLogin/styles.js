@@ -74,61 +74,19 @@ export const Input = styled.input`
   border-bottom: 1px solid #e0e0e0;
   width: 280px;
   outline: none;
+  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus {
+    border-bottom: 1px solid #24cca7;
+  }
 
   &::placeholder {
-    // font-size: 18px;
-    // line-height: 27px;
-
     color: #bdbdbd;
   }
 
   ${breakpoint.m`
     width: 410px;
   `}
-`;
-
-export const Underline = styled.div`
-  &::before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 410px;
-    background: #4158d0;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s ease;
-  }
-  /* transform: scale(1);
-
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:focus {
-    border-bottom: 1px solid #00ff00;
-    transform: scale(2);
-  } */
-
-  /* &::after {
-    content: '';
-
-    display: block;
-    width: 0;
-    height: 4px;
-
-    position: absolute;
-    bottom: -1px;
-    right: 0;
-
-    background: $hoverColor;
-    border-radius: 2px;
-
-    transition: width $transitionParameter;
-  }
-  &:hover::after,
-  &:focus::after {
-    width: 100%;
-    left: 0;
-  } */
 `;
 
 export const ButtonSubmit = styled.button`

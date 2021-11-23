@@ -8,7 +8,6 @@ import moneyService from 'services/moneyService/moneyService';
 const Balance = () => {
   const balanceSumm = useSelector(getBalance);
   const fixedBalanceSumm = moneyService(balanceSumm);
-  // console.log('balanceSumm', fixedBalanceSumm);
 
   const dispatch = useDispatch();
   useEffect(() => {

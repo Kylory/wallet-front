@@ -24,7 +24,6 @@ const Text = styled.p`
   font-size: 12px;
   line-height: 1.5;
   color: rgba(166, 166, 166, 1);
-  /* padding-bottom: 10px; */
   margin: 0;
 `;
 

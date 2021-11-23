@@ -3,7 +3,6 @@ import { breakpoint, breakpointMax } from '../styles/breakpoint';
 const BackImgUrl = require('../icons/backgroundDesktop.jpg').default;
 
 export const MainWrapperStyles = styled.div`
-  /* background: rgb(255, 255, 255, 0.4); */
   min-height: 100vh;
   background: #e7eaf2;
   ${breakpoint.m`
@@ -13,8 +12,6 @@ export const MainWrapperStyles = styled.div`
     background-position: bottom;
     background-position-x: 39%;
   `};
-
-  /* backdrop-filter: blur(50px); */
 `;
 export const PageWrapper = styled.div`
   max-width: 480px;
@@ -36,7 +33,6 @@ export const ContentWrapper = styled.section`
   ${breakpointMax.l`
     flex-direction: column;
   `};
-  /* justify-content: space-between; */
 `;
 export const AlignWrapper = styled.div`
   ${breakpointMax.m`

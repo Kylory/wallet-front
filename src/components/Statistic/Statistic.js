@@ -5,19 +5,11 @@ import { Table, Thead, TrHead, Th, Tbody, Tr, Td, Col, Text } from './styled';
 import Media from 'react-media';
 import Balance from 'components/Balance/Balance.js';
 import { getAllTransactions } from 'redux/reducers/statistic/statisticReducer.js';
-import {
-  transactionsOperations,
-  // transactionsSelectors,
-} from 'redux/transactions';
+import { transactionsOperations } from 'redux/transactions';
 import moneyService from 'services/moneyService/moneyService';
 
 const Statistic = () => {
   const content = useSelector(getStatisticsHome);
-
-  // const transactionCategories = useSelector(
-  //   transactionsSelectors.getTransactionCategories,
-  // );
-  // console.log('transactionCategories', transactionCategories);
 
   const useContent = () => {
     if (!content) {
@@ -29,42 +21,6 @@ const Statistic = () => {
   };
 
   const lastFiveObj = useContent();
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getAllTransactions());
-  //   dispatch(transactionsOperations.getCategories());
-  // }, [dispatch]);
-
-  // let array = [];
-  // lastFiveObj.map(item => {
-  //   const comment = item.comment;
-  //   // const type = item.type;
-  //   let type = item.type === 'increment' ? '+' : '-';
-  //   const amount = item.amount;
-  //   const balance = item.balance;
-  //   const category = item.category;
-  //   // console.log('category1', category1);
-  //   // const category = transactionCategories.map(
-  //   //   i =>
-  //   //     // console.log(Object.values(i)[0]),
-  //   //     // Object.values(i)[0],
-  //   //     i.category1,
-  //   // );
-  //   // Object.keys(e);
-
-  //   let dateItem = [];
-
-  //   const year = new Date(item.date).getFullYear();
-  //   const month = new Date(item.date).getMonth() + 1;
-  //   const day = new Date(item.date).getDate();
-
-  //   dateItem.push(day, month, year);
-  //   const date = dateItem.join('.');
-
-  //   const newItem = { date, comment, type, amount, balance, category };
-
-  // console.log(lastFiveObj);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllTransactions());
@@ -73,8 +29,8 @@ const Statistic = () => {
 
   let array = [];
 
-  const newObject = JSON.stringify(lastFiveObj)
-  const newObjetct2 = JSON.parse(newObject).reverse()
+  const newObject = JSON.stringify(lastFiveObj);
+  const newObjetct2 = JSON.parse(newObject).reverse();
   newObjetct2.map(item => {
     const listType = item.type;
     const type = listType === 'increment' ? '+' : '-';

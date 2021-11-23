@@ -8,7 +8,6 @@ import { invalidRequest } from 'services/pnotify/notifications';
 import { ReactComponent as LogoIcon } from 'icons/logo.svg';
 import { ReactComponent as EmailIcon } from 'icons/email.svg';
 import { ReactComponent as PasswordIcon } from 'icons/password.svg';
-// import s from './FormLogin.module.css';
 
 import {
   Logo,
@@ -20,7 +19,6 @@ import {
   ButtonSubmit,
   ButtonLink,
   LastIconContainer,
-  // Underline,
 } from './styles';
 
 let schema = yup.object().shape({
@@ -81,14 +79,6 @@ const FormLogin = () => {
         <LogoIcon />
         <LogoText>Wallet</LogoText>
       </Logo>
-      {/* <div className={s.wrapper}>
-        <div className={s.inputData}>
-        <input type="text" required />
-        <Underline />
-        <div className={s.underline}></div>
-        <label>Name</label>
-        </div>
-      </div> */}
       <IconContainer>
         <Input
           type="email"
@@ -96,8 +86,9 @@ const FormLogin = () => {
           value={email}
           onChange={hadleChange}
           placeholder="E-mail"
+          title="Email должен иметь примерный вид example@mail.com"
+          required
         />
-        {/* <Underline /> */}
         <Icon>
           <EmailIcon />
         </Icon>
@@ -111,6 +102,7 @@ const FormLogin = () => {
           onChange={hadleChange}
           placeholder="Пароль"
           title="Пароль должен состоять из 8 символов"
+          required
         />
         <Icon>
           <PasswordIcon />

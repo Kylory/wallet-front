@@ -112,6 +112,7 @@ const FormRegistration = () => {
           onChange={hadleChange}
           placeholder="E-mail"
           title="Email должен иметь примерный вид example@mail.com"
+          required
         />
         <Icon>
           <EmailIcon />
@@ -126,6 +127,7 @@ const FormRegistration = () => {
           onChange={hadleChange}
           placeholder="Пароль"
           title="Пароль должен состоять минимум от 6 символов, максимум 12 включительно"
+          required
         />
         <Icon>
           <PasswordIcon />
@@ -140,6 +142,7 @@ const FormRegistration = () => {
           onChange={hadleChange}
           placeholder="Подтвердите пароль"
           title="Пароли должны совпадать"
+          required
         />
         <Icon>
           <PasswordIcon />
@@ -154,6 +157,7 @@ const FormRegistration = () => {
           onChange={hadleChange}
           placeholder="Ваше имя"
           title="Имя долно состоять минимум от 1 символа, максимум 12 включительно"
+          required
         />
         <Icon>
           <NameIcon />
