@@ -23,22 +23,15 @@ export const Table = styled.table`
   }
   @media (min-width: 1280px) {
     width: 700px;
-    /* margin-top: 45px; */
     margin-left: 30px;
-    /* max-height: 60vh;
-    overflow: auto; */
   } ;
 `;
 export const Thead = styled.thead`
-  /* position: fixed; */
   display: block;
   width: 100%;
   height: 58px;
   background: #ffffff;
   border-radius: 30px;
-  /* @media (min-width: 1280px) {
-    width: 700px;
-  } ; */
 `;
 export const Th = styled.th`
   font-weight: bold;
@@ -103,7 +96,6 @@ export const Tbody = styled.tbody`
 
     ::-webkit-scrollbar {
       width: 5px;
-      /* height: 5px; */
     }
     ::-webkit-scrollbar-track {
       box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

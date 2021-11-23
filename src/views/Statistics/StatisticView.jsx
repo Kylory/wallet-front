@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMonth } from '../../redux/reducers/statistic/selectors';
 
 import Select from 'react-select';
-import { customStyles, SelectWrapper, StatisticsWithDoughnatWrapper, StatisticsWrapper } from './styles';
+import {
+  customStyles,
+  SelectWrapper,
+  StatisticsWithDoughnatWrapper,
+  StatisticsWrapper,
+} from './styles';
 import { TableStatistics } from '../../components/TableStatistics/TableStatistics';
 import { useMedia } from '../../hooks/useMedia';
 import { DoughnutChart } from '../../components/DiagramStatistics/DiagramStatistics';
@@ -62,28 +67,27 @@ export const StatisticView = () => {
   }, [monthSelect, yearSelect, dispatch]);
   return (
     <StatisticsWithDoughnatWrapper>
-    <DoughnutChart/>
-    <StatisticsWrapper>
-
-      <SelectWrapper>
-        <Select
-          width={desktopScreen ? '166px' : '280px'}
-          marginBottom={desktopScreen ? '0px' : '20px'}
-          defaultValue={yearSelect}
-          styles={customStyles}
-          options={year}
-          onChange={handleChangeYear}
-        />
-        <Select
-          width={desktopScreen ? '166px' : '280px'}
-          defaultValue={monthSelect}
-          styles={customStyles}
-          options={month}
-          onChange={handleMonthChange}
-        />
-      </SelectWrapper>
-      <TableStatistics />
-    </StatisticsWrapper>
+      <DoughnutChart />
+      <StatisticsWrapper>
+        <SelectWrapper>
+          <Select
+            width={desktopScreen ? '166px' : '280px'}
+            marginBottom={desktopScreen ? '0px' : '20px'}
+            defaultValue={yearSelect}
+            styles={customStyles}
+            options={year}
+            onChange={handleChangeYear}
+          />
+          <Select
+            width={desktopScreen ? '166px' : '280px'}
+            defaultValue={monthSelect}
+            styles={customStyles}
+            options={month}
+            onChange={handleMonthChange}
+          />
+        </SelectWrapper>
+        <TableStatistics />
+      </StatisticsWrapper>
     </StatisticsWithDoughnatWrapper>
   );
 };

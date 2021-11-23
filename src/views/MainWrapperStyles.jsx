@@ -33,6 +33,10 @@ export const PageWrapper = styled.div`
 `;
 export const ContentWrapper = styled.section`
   display: flex;
+  align-items: center;
+  ${breakpoint.m`
+    align-items: normal;
+  `};
   ${breakpointMax.l`
     flex-direction: column;
   `};
